@@ -1,0 +1,12 @@
+export default {
+  CLEAR_100: '#FAFAFA',
+  CLEAR_300: '#F5F5F5',
+  CLEAR_500: '#EEEEEE',
+  YELLOW_300: '#FFEB3B',
+  YELLOW_500: '#FFFF00',
+  YELLOW_700: '#FFEA00',
+  DARK_300: '#9E9E9E',
+  DARK_500: '#616161',
+  DARK_700: '#424242',
+  DARK_900: '#212121',
+};
