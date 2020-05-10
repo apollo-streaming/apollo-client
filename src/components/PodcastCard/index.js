@@ -6,15 +6,12 @@ import { Text } from '../../design-system/Typography';
 import { Thumbnail } from './styles';
 import COLORS from '../../design-system/COLORS';
 
-function PodcastCard({ src, title, artist }) {
+function PodcastCard({ src, podcast }) {
   return (
     <Flex flexDirection="column">
-      <Thumbnail src={src} alt={title} />
-      <Text color={COLORS.CLEAR_100} mb="2px">
-        {title}
-      </Text>
-      <Text color={COLORS.DARK_300} size="x_small">
-        {artist}
+      <Thumbnail src={src} alt={podcast} />
+      <Text color={COLORS.CLEAR_100} textAlign="center">
+        {podcast}
       </Text>
     </Flex>
   );
@@ -22,8 +19,7 @@ function PodcastCard({ src, title, artist }) {
 
 PodcastCard.propTypes = {
   src: PropTypes.string,
-  title: PropTypes.string,
-  artist: PropTypes.string,
+  podcast: PropTypes.string,
 };
 
 export default PodcastCard;
