@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  items: null,
+  items: [],
 };
 
 export default function search(state = INITIAL_STATE, action) {
