@@ -14,13 +14,13 @@ import { requestPopularEpisodes } from '../../store/modules/episodes/actions';
 function Home() {
   const dispatch = useDispatch();
 
-  const podcasts = useSelector((state) => state.podcasts.items);
-  const episodes = useSelector((state) => state.episodes.items);
-
   useEffect(() => {
     dispatch(requestPopularPodcasts());
     dispatch(requestPopularEpisodes());
-  }, [dispatch]);
+  }, []);
+
+  const podcasts = useSelector((state) => state.podcasts.items);
+  const episodes = useSelector((state) => state.episodes.items);
 
   return (
     <HomeWrapper>
