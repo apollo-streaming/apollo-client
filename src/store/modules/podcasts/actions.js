@@ -4,9 +4,9 @@ export function requestPopularPodcasts() {
   };
 }
 
-export function requestPopularPodcastsSuccess(Podcasts) {
+export function requestPopularPodcastsSuccess(podcasts) {
   return {
     type: '@podcasts/REQUEST_TRENDING_SUCCESS',
-    payload: { Podcasts },
+    payload: { podcasts },
   };
 }

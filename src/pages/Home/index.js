@@ -28,7 +28,7 @@ function Home() {
       </H1>
       <ScrollableList>
         {podcasts.map((item) => (
-          <PodcastCard key={item.src} {...item} />
+          <PodcastCard key={item.name} {...item} />
         ))}
       </ScrollableList>
     </HomeWrapper>

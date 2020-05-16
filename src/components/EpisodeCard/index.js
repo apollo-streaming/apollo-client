@@ -6,24 +6,24 @@ import { Text } from '../../design-system/Typography';
 import { Thumbnail } from './styles';
 import COLORS from '../../design-system/COLORS';
 
-function EpisodeCard({ src, title, podcast }) {
+function EpisodeCard({ banner, title, description = '' }) {
   return (
     <Flex flexDirection="column">
-      <Thumbnail src={src} alt={title} />
+      <Thumbnail src={banner} alt={title} />
       <Text color={COLORS.CLEAR_100} mb="2px">
         {title}
       </Text>
       <Text color={COLORS.DARK_300} size="x_small">
-        {podcast}
+        {description}
       </Text>
     </Flex>
   );
 }
 
 EpisodeCard.propTypes = {
-  src: PropTypes.string,
+  banner: PropTypes.string,
   title: PropTypes.string,
-  podcast: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default EpisodeCard;

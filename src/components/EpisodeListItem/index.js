@@ -6,10 +6,10 @@ import { Text } from '../../design-system/Typography';
 import { Thumbnail } from './styles';
 import COLORS from '../../design-system/COLORS';
 
-function EpisodeListItem({ src, title }) {
+function EpisodeListItem({ banner, title }) {
   return (
     <Flex>
-      <Thumbnail src={src} alt={title} />
+      <Thumbnail src={banner} alt={title} />
       <Text color={COLORS.CLEAR_100} ml="16px">
         {title}
       </Text>
@@ -18,7 +18,7 @@ function EpisodeListItem({ src, title }) {
 }
 
 EpisodeListItem.propTypes = {
-  src: PropTypes.string,
+  banner: PropTypes.string,
   title: PropTypes.string,
 };
 
