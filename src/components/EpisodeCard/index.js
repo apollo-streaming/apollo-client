@@ -6,7 +6,7 @@ import { Text } from '../../design-system/Typography';
 import { Thumbnail } from './styles';
 import COLORS from '../../design-system/COLORS';
 
-function EpisodeCard({ banner, title, description = '' }) {
+function EpisodeCard({ banner, title, description = '', key }) {
   return (
     <Flex flexDirection="column">
       <Thumbnail src={banner} alt={title} />

@@ -2,11 +2,10 @@ import styled from 'styled-components';
 import COLORS from '../COLORS';
 
 const fontSizes = {
-  x_small: '20px',
-  small: '24px',
-  medium: '28px',
-  large: '32px',
-  xx_large: '64px',
+  x_small: '16px',
+  small: '20px',
+  medium: '24px',
+  large: '28px',
 };
 
 const fontWeights = {
@@ -15,7 +14,7 @@ const fontWeights = {
   bold: '800',
 };
 
-const H1Wrapper = styled.h1`
+const H2Wrapper = styled.h2`
   color: ${(props) => props.color || COLORS.DARK_900};
   font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
   font-size: ${(props) =>
@@ -29,4 +28,4 @@ const H1Wrapper = styled.h1`
   margin-top: ${(props) => props.mt || 'unset'};
 `;
 
-export default H1Wrapper;
+export default H2Wrapper;

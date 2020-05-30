@@ -2,7 +2,7 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { requestPopularPodcastsSuccess } from './actions';
 
 export function* requestPopularPodcasts() {
-  const data = yield call(fetch, 'http://localhost:4567/podcasts', {
+  const data = yield call(fetch, 'http://localhost:4567/podcast', {
     method: 'GET',
     mode: 'cors',
     cache: 'default',
@@ -10,7 +10,7 @@ export function* requestPopularPodcasts() {
 
   const response = yield data.json();
 
-  yield put(requestPopularPodcastsSuccess(response.items));
+  yield put(requestPopularPodcastsSuccess(response));
 }
 
 export default all([

@@ -10,7 +10,7 @@ export function* requestPopularEpisodes() {
 
   const response = yield data.json();
 
-  yield put(requestPopularEpisodesSuccess(response.items));
+  yield put(requestPopularEpisodesSuccess(response));
 }
 
 export default all([

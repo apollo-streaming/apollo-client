@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import history from '../../services/history';
 
@@ -8,31 +7,43 @@ import Input from '../../design-system/Input';
 import { Text } from '../../design-system/Typography';
 import COLORS from '../../design-system/COLORS';
 import { HeaderWrapper } from './styles';
-import { searchFromText } from '../../store/modules/search/actions';
 
 function Header() {
   const [searchText, setSearchText] = useState();
-  const dispatch = useDispatch();
 
   const search = (text) => {
     setSearchText(text);
 
-    if (text.length > 3) {
-      dispatch(searchFromText(text));
+    if (text.trim().length > 2) {
+      history.push(`/busca?q=${text}`);
     } else if (text.length === 0) {
-      history.goBack();
+      history.push('/');
     }
   };
 
   return (
     <HeaderWrapper justifyContent="space-between" alignItems="center">
-      <Input
-        rounded
-        type="text"
-        placeholder="Faça uma busca"
-        value={searchText}
-        onChange={(e) => search(e.target.value)}
-      />
+      <Flex alignItems="center">
+        <Text
+          style={{
+            cursor: 'pointer',
+          }}
+          color={COLORS.CLEAR_100}
+          mr="16px"
+          size="large"
+          weight="bold"
+          onClick={() => history.push('/')}
+        >
+          apollo
+        </Text>
+        <Input
+          rounded
+          type="text"
+          placeholder="Faça uma busca"
+          value={searchText}
+          onChange={(e) => search(e.target.value)}
+        />
+      </Flex>
 
       <Flex>
         <Text color={COLORS.CLEAR_100} mr="16px">

@@ -5,7 +5,7 @@ import history from '../../../services/history';
 export function* searchFromText({ payload }) {
   const { text } = payload;
 
-  const data = yield call(fetch, `http://localhost:4567/podcasts?q=${text}`, {
+  const data = yield call(fetch, `http://localhost:4567/podcast?q=${text}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'default',
@@ -13,9 +13,7 @@ export function* searchFromText({ payload }) {
 
   const response = yield data.json();
 
-  yield put(searchFromTextSuccess(response.items));
-
-  history.push(`/busca?q=${text}`);
+  yield put(searchFromTextSuccess(response));
 }
 
 export default all([takeLatest('@search/SEARCH_REQUEST', searchFromText)]);

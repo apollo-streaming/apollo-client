@@ -21,6 +21,7 @@ function Home() {
 
   const podcasts = useSelector((state) => state.podcasts.items);
   const episodes = useSelector((state) => state.episodes.items);
+  console.log(episodes);
 
   return (
     <HomeWrapper>
@@ -28,17 +29,15 @@ function Home() {
         Episódios populares
       </H1>
       <ScrollableList>
-        {episodes.map((item) => (
-          <EpisodeCard key={item.src} {...item} />
-        ))}
+        {episodes &&
+          episodes.map((item) => <EpisodeCard key={item.src} {...item} />)}
       </ScrollableList>
       <H1 color={COLORS.CLEAR_100} weight="bold" mt="60px" mb="12px">
         Podcasts populares
       </H1>
       <ScrollableList>
-        {podcasts.map((item) => (
-          <PodcastCard key={item.name} {...item} />
-        ))}
+        {podcasts &&
+          podcasts.map((item) => <PodcastCard key={item.name} {...item} />)}
       </ScrollableList>
     </HomeWrapper>
   );
