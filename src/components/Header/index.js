@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import history from '../../services/history';
 
 import Flex from '../../design-system/Flex';
@@ -8,8 +10,32 @@ import { Text } from '../../design-system/Typography';
 import COLORS from '../../design-system/COLORS';
 import { HeaderWrapper } from './styles';
 
+const defaultOptions = [
+  {
+    route: '/sign-in',
+    label: 'Entrar',
+  },
+  {
+    route: '/sign-up',
+    label: 'Criar conta',
+  },
+];
+
+const authenticatedOptions = [
+  {
+    route: '/playlists',
+    label: 'Playlists',
+  },
+  {
+    route: 'profile',
+    label: 'Minha conta',
+  },
+];
+
 function Header() {
   const [searchText, setSearchText] = useState();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const options = isAuthenticated ? authenticatedOptions : defaultOptions;
 
   const search = (text) => {
     setSearchText(text);
@@ -46,10 +72,13 @@ function Header() {
       </Flex>
 
       <Flex>
-        <Text color={COLORS.CLEAR_100} mr="16px">
-          Playlists
-        </Text>
-        <Text color={COLORS.CLEAR_100}>Minha conta</Text>
+        {options.map(({ route, label }) => (
+          <Link to={route}>
+            <Text color={COLORS.CLEAR_100} mr="16px">
+              {label}
+            </Text>
+          </Link>
+        ))}
       </Flex>
     </HeaderWrapper>
   );

@@ -6,12 +6,15 @@ import Flex from '../../design-system/Flex';
 import { Text } from '../../design-system/Typography';
 import { Thumbnail } from './styles';
 import COLORS from '../../design-system/COLORS';
+import Button from '../../design-system/Button';
 
 function EpisodeListItem({
   banner = 'https://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png',
   name,
   title = '',
   description = '',
+  adminView,
+  width = 'unset',
 }) {
   return name ? (
     <Link
@@ -26,16 +29,23 @@ function EpisodeListItem({
       </Flex>
     </Link>
   ) : (
-    <Flex>
-      <Thumbnail src={banner} alt={title} />
-      <Flex flexDirection="column">
-        <Text color={COLORS.CLEAR_100} ml="16px" mb="4px">
-          {title}
-        </Text>
-        <Text color={COLORS.CLEAR_100} size="x_small" ml="16px">
-          {description}
-        </Text>
+    <Flex justifyContent="space-between" width={width}>
+      <Flex>
+        <Thumbnail src={banner} alt={title} />
+        <Flex flexDirection="column">
+          <Text color={COLORS.CLEAR_100} ml="16px" mb="4px">
+            {title}
+          </Text>
+          <Text color={COLORS.CLEAR_100} size="x_small" ml="16px">
+            {description}
+          </Text>
+        </Flex>
       </Flex>
+      {!!adminView && (
+        <Button bgColor={COLORS.CLEAR_100} color={COLORS.DARK_900} ml="auto">
+          deletar
+        </Button>
+      )}
     </Flex>
   );
 }
