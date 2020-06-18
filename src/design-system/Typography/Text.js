@@ -6,6 +6,7 @@ const fontSizes = {
   small: '12px',
   medium: '14px',
   large: '20px',
+  x_large: '24px',
 };
 
 const fontWeights = {
@@ -16,7 +17,8 @@ const fontWeights = {
 
 const TextWrapper = styled.p`
   color: ${(props) => props.color || COLORS.DARK_900};
-  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+  cursor: ${({ pointer }) => (pointer ? 'pointer' : 'unset')};
+  font-family: 'Montserrat', sans-serif;
   font-size: ${(props) =>
     props.size ? fontSizes[props.size] : fontSizes.medium};
   font-weight: ${(props) =>

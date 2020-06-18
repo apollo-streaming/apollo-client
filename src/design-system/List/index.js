@@ -2,12 +2,11 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const FlexWrapper = styled.div`
-  display: flex;
-  flex: ${({ flex }) => flex || 'unset'};
-  flex-direction: ${({ direction }) => direction || 'row'};
-  justify-content: ${({ justifyContent }) => justifyContent || 'unset'};
-  align-items: ${({ alignItems }) => alignItems || 'unset'};
+const ListWrapper = styled.ul`
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
 
   padding-left: ${({ paddingLeft, pl, padding }) =>
     paddingLeft || pl || padding || 'unset'};
@@ -26,14 +25,26 @@ const FlexWrapper = styled.div`
     marginTop || pt || margin || 'unset'};
   margin-bottom: ${({ marginBottom, pb, margin }) =>
     marginBottom || pb || margin || 'unset'};
+
+  & > * {
+    margin-bottom: ${({ spaceBetween, useSpacer }) =>
+      useSpacer ? `${spaceBetween.split('px')[0] / 2}px` : spaceBetween};
+
+    &:not(:first-of-type) {
+      padding-top: ${({ spaceBetween, useSpacer }) =>
+        useSpacer ? `${spaceBetween.split('px')[0] / 2}px` : 'unset'};
+    }
+  }
 `;
 
-function Flex({ children, ...props }) {
-  return <FlexWrapper {...props}>{children}</FlexWrapper>;
+function List({ children, ...props }) {
+  return (
+    <ListWrapper role="list" {...props}>
+      {children}
+    </ListWrapper>
+  );
 }
 
-Flex.propTypes = {
+List.propTypes = {
   children: PropTypes.node,
 };
-
-export default Flex;

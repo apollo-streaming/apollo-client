@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import Flex from '../../design-system/Flex';
-import COLORS from '../../design-system/COLORS';
 
-export const HeaderWrapper = styled(Flex)`
-  padding: 18px 36px;
-  background-color: ${COLORS.DARK_900};
+export const HeaderContainer = styled.header`
+  padding: 64px 64px 40px 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 `;

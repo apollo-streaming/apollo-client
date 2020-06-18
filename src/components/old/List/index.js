@@ -8,6 +8,8 @@ import COLORS from '../../design-system/COLORS';
 const ListWrapper = styled(Flex)`
   & > * {
     &:not(:last-child) {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
       border-bottom: 1px solid ${COLORS.CLEAR_300};
     }
   }

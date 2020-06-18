@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { ListEpisodesWrapper } from './styles';
@@ -6,13 +6,17 @@ import * as Typography from '../../../design-system/Typography';
 import List from '../../../components/List';
 import EpisodeListItem from '../../../components/EpisodeListItem';
 import COLORS from '../../../design-system/COLORS';
-import { requestPopularEpisodes } from '../../../store/modules/episodes/actions';
+import { requestEpisodes } from '../../../store/modules/episodes/actions';
 
 function ListEpisodes() {
   const dispatch = useDispatch();
-  dispatch(requestPopularEpisodes());
+
+  useEffect(() => {
+    dispatch(requestEpisodes(5));
+  }, []);
 
   const episodes = useSelector((state) => state.episodes.items);
+  console.log(episodes);
 
   return (
     <ListEpisodesWrapper flexDirection="column">

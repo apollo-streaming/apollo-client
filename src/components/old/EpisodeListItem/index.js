@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Flex from '../../design-system/Flex';
 import { Text } from '../../design-system/Typography';
 import { Thumbnail } from './styles';
 import COLORS from '../../design-system/COLORS';
 import Button from '../../design-system/Button';
+import { deleteEpisode } from '../../store/modules/episodes/actions';
 
 function EpisodeListItem({
   banner = 'https://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png',
@@ -15,7 +17,14 @@ function EpisodeListItem({
   description = '',
   adminView,
   width = 'unset',
+  id,
 }) {
+  const dispatch = useDispatch();
+
+  function deleteEp(epId) {
+    dispatch(deleteEpisode({ id: epId, podcastId: 5 }));
+  }
+
   return name ? (
     <Link
       to={`/podcast/${encodeURIComponent(name)}`}
@@ -42,7 +51,12 @@ function EpisodeListItem({
         </Flex>
       </Flex>
       {!!adminView && (
-        <Button bgColor={COLORS.CLEAR_100} color={COLORS.DARK_900} ml="auto">
+        <Button
+          onClick={() => deleteEp(id)}
+          bgColor={COLORS.CLEAR_100}
+          color={COLORS.DARK_900}
+          ml="auto"
+        >
           deletar
         </Button>
       )}

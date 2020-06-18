@@ -8,7 +8,7 @@ import './config/ReactotronConfig';
 
 import Routes from './Routes';
 import Header from './components/Header';
-import Footer from './components/Footer';
+import Sidebar from './containers/Sidebar';
 
 import { store, persistor } from './store';
 import history from './services/history';
@@ -22,8 +22,8 @@ function App() {
         <Router history={history}>
           <GlobalStyle />
           <Header />
+          <Sidebar />
           <Routes />
-          <Footer />
         </Router>
       </PersistGate>
     </Provider>

@@ -41,7 +41,7 @@ function PodcastOverview() {
           </Typography.H2>
           <List>
             {podcast.episodes.map((item) => (
-              <EpisodeListItem {...item} />
+              <EpisodeListItem {...item} width="100%" />
             ))}
           </List>
         </>
