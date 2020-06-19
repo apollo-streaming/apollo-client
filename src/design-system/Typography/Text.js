@@ -4,8 +4,8 @@ import COLORS from '../COLORS';
 const fontSizes = {
   x_small: '10px',
   small: '12px',
-  medium: '14px',
-  large: '20px',
+  medium: '16px',
+  large: '18px',
   x_large: '24px',
 };
 
@@ -23,6 +23,7 @@ const TextWrapper = styled.p`
     props.size ? fontSizes[props.size] : fontSizes.medium};
   font-weight: ${(props) =>
     props.weight ? fontWeights[props.weight] : fontWeights.regular};
+  max-width: ${({ maxWidth }) => maxWidth || 'unset'};
   text-align: ${(props) => props.textAlign || 'unset'};
   margin-right: ${(props) => props.mr || 'unset'};
   margin-left: ${(props) => props.ml || 'unset'};

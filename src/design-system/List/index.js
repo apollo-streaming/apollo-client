@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ListWrapper = styled.ul`
+  display: flex;
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -27,10 +28,13 @@ const ListWrapper = styled.ul`
     marginBottom || pb || margin || 'unset'};
 
   & > * {
-    margin-bottom: ${({ spaceBetween, useSpacer }) =>
-      useSpacer ? `${spaceBetween.split('px')[0] / 2}px` : spaceBetween};
+    margin-bottom: ${({ spaceBetween, useSpacer, vertical }) =>
+      vertical &&
+      (useSpacer ? `${spaceBetween.split('px')[0] / 2}px` : spaceBetween)};
 
     &:not(:first-of-type) {
+      margin-left: ${({ spaceBetween, horizontal }) =>
+        horizontal ? spaceBetween : 'unset'};
       padding-top: ${({ spaceBetween, useSpacer }) =>
         useSpacer ? `${spaceBetween.split('px')[0] / 2}px` : 'unset'};
     }
@@ -48,3 +52,5 @@ function List({ children, ...props }) {
 List.propTypes = {
   children: PropTypes.node,
 };
+
+export default List;

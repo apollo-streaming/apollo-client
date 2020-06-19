@@ -2,40 +2,52 @@ import React from 'react';
 import styled from 'styled-components';
 import * as PropTypes from 'prop-types';
 
+import COLORS from '../COLORS';
+import GRID from '../GRID';
 import Button from '../Button';
 import Icon from '../Icon';
-import GRID from '../GRID';
-import COLORS from '../COLORS';
+import Flex from '../Flex';
 
 const StyledInput = styled.input`
   border-radius: ${GRID.GET(1)};
   background-color: ${COLORS.GRAY_100};
-  color: ${COLORS.GRAY_300};
+  color: ${COLORS.GRAY_500};
   padding: ${`${GRID.GET(2)} ${GRID.GET(3)}`};
   position: relative;
+  width: ${({ width }) => width || 'unset'};
+  font-size: ${GRID.GET(2)};
 
-  & > ${Icon} {
-    position: absolute;
-    right: ${GRID.GET(2)};
-    top: 50%;
-    transform: translateY(-50%);
+  &::placeholder {
+    color: ${COLORS.GRAY_500};
   }
+`;
+
+const StyledInputWrapper = styled(Flex)`
+  position: relative;
+`;
+
+const StyledInputButton = styled(Button)`
+  position: absolute;
+  right: ${GRID.GET(2)};
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 const Input = ({ icon, onIconClick, ...props }) => {
   return (
-    <StyledInput {...props}>
+    <StyledInputWrapper>
+      <StyledInput {...props} />
       {icon &&
         (onIconClick ? (
-          <Button transparent onClick={onIconClick}>
+          <StyledInputButton transparent>
             <Icon name={icon} />
-          </Button>
+          </StyledInputButton>
         ) : (
-          <Button transparent>
+          <StyledInputButton transparent>
             <Icon name={icon} />
-          </Button>
+          </StyledInputButton>
         ))}
-    </StyledInput>
+    </StyledInputWrapper>
   );
 };
 

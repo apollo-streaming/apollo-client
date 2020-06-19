@@ -18,14 +18,14 @@ const FlexWrapper = styled.div`
   padding-bottom: ${({ paddingBottom, pb, padding }) =>
     paddingBottom || pb || padding || 'unset'};
 
-  margin-left: ${({ marginLeft, pl, margin }) =>
-    marginLeft || pl || margin || 'unset'};
-  margin-right: ${({ marginRight, pr, margin }) =>
-    marginRight || pr || margin || 'unset'};
-  margin-top: ${({ marginTop, pt, margin }) =>
-    marginTop || pt || margin || 'unset'};
-  margin-bottom: ${({ marginBottom, pb, margin }) =>
-    marginBottom || pb || margin || 'unset'};
+  margin-left: ${({ marginLeft, ml, margin }) =>
+    marginLeft || ml || margin || 'unset'};
+  margin-right: ${({ marginRight, mr, margin }) =>
+    marginRight || mr || margin || 'unset'};
+  margin-top: ${({ marginTop, mt, margin }) =>
+    marginTop || mt || margin || 'unset'};
+  margin-bottom: ${({ marginBottom, mb, margin }) =>
+    marginBottom || mb || margin || 'unset'};
 `;
 
 function Flex({ children, ...props }) {

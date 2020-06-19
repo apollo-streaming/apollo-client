@@ -8,24 +8,45 @@ import Flex from '../Flex';
 import Icon from '../Icon';
 
 const ToggleContainer = styled.div`
-  cursor: pointer;
+  & > div:first-of-type {
+    & > * {
+      cursor: pointer;
+    }
 
-  & > ${Icon} {
-    rotate: ${({ isOpen }) => (isOpen ? '0deg' : '180deg')};
-    transition: all 0.25s ease;
+    & > img {
+      transform: ${({ isOpen }) =>
+        isOpen ? 'rotate(0deg)' : 'rotate(180deg)'};
+      transition: all 0.4s ease;
+    }
   }
 `;
 
-function Toggle({ label, labelProperties = {}, open = false, children }) {
+const Children = styled.div`
+  /* @TODO: Adicionar animação ao height */
+  /* transform: ${({ isOpen }) => (isOpen ? 'scaleY(0)' : 'scaleY(1)')};
+  transition: transform 0.25s ease; */
+`;
+
+function Toggle({
+  label,
+  labelProperties = { size: 'large', weight: 'bold' },
+  open = false,
+  children,
+}) {
   const [isOpen, setIsOpen] = useState(open);
 
   return (
-    <ToggleContainer isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-      <Flex justifyContent="space-between" mb={GRID.GET(5)}>
+    <ToggleContainer isOpen={isOpen}>
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+        mb={isOpen ? GRID.GET(5) : null}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <Text {...labelProperties}>{label}</Text>
         <Icon name="up-arrow" />
       </Flex>
-      {children}
+      <Children isOpen={isOpen}>{isOpen && children}</Children>
     </ToggleContainer>
   );
 }
