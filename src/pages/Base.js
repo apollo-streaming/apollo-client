@@ -5,9 +5,16 @@ import styled from 'styled-components';
 import GRID from '../design-system/GRID';
 
 const Container = styled.section`
-  padding: ${`${GRID.GET(18)} ${GRID.GET(7)} ${GRID.GET(2)} ${GRID.GET(10)}`};
+  margin-top: ${GRID.GET(18)};
+  padding: ${`0 ${GRID.GET(7)} ${GRID.GET(2)} ${GRID.GET(10)}`};
   /* Adicionar dinamicidade para caso a sidebar estiver fechada */
   width: calc(100% - 464px);
+  max-height: ${`calc(100vh - ${GRID.GET(18)})`};
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
 
   & > :nth-child(2) {
     margin-top: ${GRID.GET(6)};
