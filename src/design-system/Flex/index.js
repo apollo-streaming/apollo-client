@@ -8,6 +8,7 @@ const FlexWrapper = styled.div`
   flex-direction: ${({ direction }) => direction || 'row'};
   justify-content: ${({ justifyContent }) => justifyContent || 'unset'};
   align-items: ${({ alignItems }) => alignItems || 'unset'};
+  height: ${({ height }) => height};
 
   padding-left: ${({ paddingLeft, pl, padding }) =>
     paddingLeft || pl || padding || 'unset'};

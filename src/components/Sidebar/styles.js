@@ -11,9 +11,13 @@ export const SidebarContainer = styled.nav`
   height: 100%;
 
   background-color: ${COLORS.GRAY_300};
-  padding: ${`${GRID.GET(8)} ${GRID.GET(6)} ${GRID.GET(2)} ${GRID.GET(6)}`};
+  padding-top: ${GRID.GET(8)};
+  padding-right: ${GRID.GET(6)};
+  padding-bottom: ${GRID.GET(2)};
+  padding-left: ${GRID.GET(6)};
 
   & > *:not(:first-child) {
-    margin-bottom: ${GRID.GET(4)};
+    margin-bottom: ${({ shouldHavePb }) =>
+      shouldHavePb ? GRID.GET(4) : '0px'};
   }
 `;

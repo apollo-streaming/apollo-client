@@ -10,7 +10,7 @@ import Flex from '../Flex';
 
 const StyledInput = styled.input`
   border-radius: ${GRID.GET(1)};
-  background-color: ${COLORS.GRAY_100};
+  background-color: ${({ bg }) => bg || COLORS.GRAY_100};
   color: ${COLORS.GRAY_500};
   padding: ${`${GRID.GET(2)} ${GRID.GET(3)}`};
   position: relative;
