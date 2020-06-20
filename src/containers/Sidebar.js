@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import history from '../services/history';
 
 import SidebarComponent from '../components/Sidebar';
-import SidebarActions from '../store/modules/sidebar/actions';
 import { useCurrentState } from '../store/modules/sidebar/selectors';
 import { useCurrentEpisode } from '../store/modules/player/selectors';
 import { useGetRecentlyPlayed } from '../store/modules/episode/selectors';
