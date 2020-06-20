@@ -12,7 +12,7 @@ function SidebarControls({ onClose, username }) {
   return (
     <Flex justifyContent="space-between" mb={GRID.GET(8)}>
       <Flex alignItems="center">
-        <Button transparent pointer onClick={onClose}>
+        <Button transparent pointer onClick={onClose} padding="0px">
           <Icon name="back" />
         </Button>
         <Text

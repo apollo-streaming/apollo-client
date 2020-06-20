@@ -6,6 +6,7 @@ const fontSizes = {
   small: '24px',
   medium: '28px',
   large: '32px',
+  x_large: '48px',
   xx_large: '64px',
 };
 
@@ -17,7 +18,7 @@ const fontWeights = {
 
 const H1Wrapper = styled.h1`
   color: ${(props) => props.color || COLORS.DARK_900};
-  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Montserrat';
   font-size: ${(props) =>
     props.size ? fontSizes[props.size] : fontSizes.medium};
   font-weight: ${(props) =>

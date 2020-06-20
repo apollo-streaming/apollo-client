@@ -1,11 +1,17 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Podcast from './pages/Podcast';
+import Playlist from './pages/Playlist';
+import Following from './pages/Following';
 
 function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
+      <Route path="/podcast" component={Podcast} />
+      <Route path="/playlists" component={Playlist} />
+      <Route path="/following" component={Following} />
       {/* <Route path="/" exact component={Home} />
       <Route path="/busca" component={SearchResults} />
       <Route path="/sign-in" component={SignIn} />

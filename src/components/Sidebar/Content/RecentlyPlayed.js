@@ -13,9 +13,9 @@ function RecentlyPlayed({ items }) {
           <Card {...item} />
         ))}
       </Toggle>
-      <Link to="/" label="Seus Favoritos" />
-      <Link to="/" label="Artistas que sigo" />
-      <Link to="/" label="Minhas Playlists" />
+      {/* <Link to="/following" label="Seus Favoritos" /> */}
+      <Link icon to="/following" label="Artistas que sigo" />
+      <Link icon to="/playlists" label="Minhas Playlists" />
     </>
   );
 }

@@ -43,7 +43,7 @@ const Input = ({ icon, onIconClick, ...props }) => {
             <Icon name={icon} />
           </StyledInputButton>
         ) : (
-          <StyledInputButton transparent>
+          <StyledInputButton transparent padding="0px">
             <Icon name={icon} />
           </StyledInputButton>
         ))}

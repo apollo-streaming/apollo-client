@@ -10,13 +10,14 @@ function Link({
   label,
   labelProperties = { size: 'large', weight: 'bold' },
   to,
+  icon = false,
 }) {
   return (
     <Flex>
       <RouterLink to={to} style={{ width: '100%' }}>
         <Flex justifyContent="space-between" alignItems="center">
           <Text {...labelProperties}>{label}</Text>
-          <Icon name="right-arrow" />
+          {icon && <Icon name="right-arrow" />}
         </Flex>
       </RouterLink>
     </Flex>
@@ -28,6 +29,7 @@ Link.propTypes = {
   // eslint-disable-next-line
   labelProperties: PropTypes.object,
   to: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+  icon: PropTypes.bool,
 };
 
 export default Link;

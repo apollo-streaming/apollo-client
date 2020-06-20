@@ -24,7 +24,7 @@ function AboutEpisode({ about, commentaries, commentary, setCommentary }) {
       <Flex
         direction="column"
         justifyContent="space-between"
-        height={`calc(100% - ${GRID.GET(6.5)})`}
+        height={`calc(100% - ${GRID.GET(8)})`}
       >
         <Flex direction="column" height="inherit">
           <Text weight="bold" size="large" mb={GRID.GET(3)} mt={GRID.GET(5)}>

@@ -1,20 +1,23 @@
-import React from 'react';
 import styled from 'styled-components';
-import * as PropTypes from 'prop-types';
+import COLORS from '../../design-system/COLORS';
+import GRID from '../../design-system/GRID';
 
-import GRID from '../GRID';
+const ProgressBar = styled.div`
+  background-color: ${COLORS.DARK_300};
+  height: ${GRID.GET(0.5)};
+  border-radius: 1000vw;
+  position: relative;
+  width: ${({ width }) => width || GRID.GET(50)};
 
-const sizes = {
-  x_small: GRID.GET(1.5),
-  small: GRID.GET(2),
-  medium: GRID.GET(3),
-  large: GRID.GET(4),
-  x_large: GRID.GET(5),
-};
-
-const StyledIcon = styled.img`
-  height: ${({ size }) => (size.includes('px') ? size : sizes[size])};
-  width: ${({ size }) => (size.includes('px') ? size : sizes[size])};
+  &::after {
+    content: '';
+    height: ${GRID.GET(0.5)};
+    width: ${({ progress }) => `${progress}%`};
+    background-color: ${COLORS.YELLOW_300};
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 
   padding-left: ${({ paddingLeft, pl, padding }) =>
     paddingLeft || pl || padding || 'unset'};
@@ -35,18 +38,4 @@ const StyledIcon = styled.img`
     marginBottom || mb || margin || 'unset'};
 `;
 
-const loadIcon = require.context('../../assets/svg', false, /\.svg$/);
-
-const Icon = ({ name, size = 'medium', ...props }) => {
-  console.log(name);
-  const icon = loadIcon(`./${name}.svg`);
-
-  return <StyledIcon src={icon} size={size} {...props} />;
-};
-
-Icon.propTypes = {
-  name: PropTypes.string,
-  size: PropTypes.string,
-};
-
-export default Icon;
+export default ProgressBar;

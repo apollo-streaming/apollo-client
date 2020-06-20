@@ -18,9 +18,11 @@ function HomeList({
 }) {
   return (
     <Flex direction="column">
-      <Text weight="bold" size="x_large" mb={GRID.GET(3)}>
-        {label}
-      </Text>
+      {label && (
+        <Text weight="bold" size="x_large" mb={GRID.GET(3)}>
+          {label}
+        </Text>
+      )}
       <List spaceBetween={GRID.GET(2)} horizontal>
         {items.map(({ image, liked = false, title, subtitle }) => (
           <ListItem>

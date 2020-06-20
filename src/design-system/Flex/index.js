@@ -9,6 +9,7 @@ const FlexWrapper = styled.div`
   justify-content: ${({ justifyContent }) => justifyContent || 'unset'};
   align-items: ${({ alignItems }) => alignItems || 'unset'};
   height: ${({ height }) => height};
+  width: ${({ width }) => width};
 
   padding-left: ${({ paddingLeft, pl, padding }) =>
     paddingLeft || pl || padding || 'unset'};

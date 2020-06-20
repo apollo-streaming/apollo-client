@@ -83,6 +83,7 @@ const STATIC_EPISODE_INFO = {
 function Sidebar() {
   // const dispatch = useDispatch();
   const [commentary, setCommentary] = useState('');
+  const aboutEpisode = { ...STATIC_EPISODE_INFO, commentary, setCommentary };
 
   const onHandleClose = () => {
     console.log('Fechar');
@@ -92,8 +93,8 @@ function Sidebar() {
     <SidebarComponent
       username="Thalles Carvalho"
       onClose={onHandleClose}
-      aboutEpisode={{ ...STATIC_EPISODE_INFO, commentary, setCommentary }}
-      recentlyPlayed={[]}
+      aboutEpisode={true ? {} : aboutEpisode}
+      recentlyPlayed={true ? STATIC_RECENTLY_PLAYED : []}
     />
   );
 }
