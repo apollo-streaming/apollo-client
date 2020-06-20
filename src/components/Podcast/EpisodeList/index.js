@@ -33,9 +33,9 @@ function EpisodeList({ items }) {
         height="100%"
         mb={GRID.GET(2)}
       >
-        {items.map(({ image, title, description }) => (
+        {items.map(({ image, title, description, onClick }) => (
           <ListItem key={title}>
-            <Card {...{ image, title, description }} />
+            <Card {...{ image, title, description, onClick }} />
           </ListItem>
         ))}
       </List>

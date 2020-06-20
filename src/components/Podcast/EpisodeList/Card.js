@@ -14,12 +14,13 @@ const Image = styled.div`
   height: ${GRID.GET(8)};
   width: ${GRID.GET(8)};
   border-radius: ${GRID.GET(1)};
+  cursor: pointer;
 `;
 
-function Card({ image, title, description }) {
+function Card({ image, title, description, onClick }) {
   return (
     <Flex>
-      <Image src={image} />
+      <Image src={image} onClick={onClick} />
       <Flex
         direction="column"
         ml={GRID.GET(2)}
@@ -40,6 +41,7 @@ Card.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Card;

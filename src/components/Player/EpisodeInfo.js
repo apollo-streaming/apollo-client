@@ -6,6 +6,7 @@ import Flex from '../../design-system/Flex';
 import { Text } from '../../design-system/Typography';
 import GRID from '../../design-system/GRID';
 import COLORS from '../../design-system/COLORS';
+import { limitCharacters } from '../../utils/functional';
 
 const Image = styled.div`
   background-image: ${({ src }) => `url(${src})`};
@@ -17,7 +18,7 @@ const Image = styled.div`
   margin-right: ${GRID.GET(3)};
 `;
 
-function EpisodeInfo({ image, podcast, episode }) {
+function EpisodeInfo({ image, podcast, title }) {
   return (
     <Flex>
       <Image src={image} />
@@ -26,7 +27,7 @@ function EpisodeInfo({ image, podcast, episode }) {
           {podcast}
         </Text>
         <Text size="x_small" color={COLORS.DARK_500}>
-          {episode}
+          {limitCharacters(title, 42, true)}
         </Text>
       </Flex>
     </Flex>
@@ -35,8 +36,9 @@ function EpisodeInfo({ image, podcast, episode }) {
 
 EpisodeInfo.propTypes = {
   image: PropTypes.string,
-  podcast: PropTypes.string,
-  episode: PropTypes.string,
+  // eslint-disable-next-line
+  podcast: PropTypes.object,
+  title: PropTypes.string,
 };
 
 export default EpisodeInfo;

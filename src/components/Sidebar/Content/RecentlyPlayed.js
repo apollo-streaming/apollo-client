@@ -8,11 +8,13 @@ import Card from '../../Generic/Sidebar/Card';
 function RecentlyPlayed({ items }) {
   return (
     <>
-      <Toggle label="Ouvidos recentemente" open>
-        {items.map((item) => (
-          <Card {...item} />
-        ))}
-      </Toggle>
+      {!!items.length && (
+        <Toggle label="Ouvidos recentemente" open>
+          {items.map((item) => (
+            <Card {...item} />
+          ))}
+        </Toggle>
+      )}
       {/* <Link to="/following" label="Seus Favoritos" /> */}
       <Link icon to="/following" label="Artistas que sigo" />
       <Link icon to="/playlists" label="Minhas Playlists" />

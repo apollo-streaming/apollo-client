@@ -10,7 +10,12 @@ import COLORS from '../../../../design-system/COLORS';
 import Flex from '../../../../design-system/Flex';
 import GRID from '../../../../design-system/GRID';
 
-function AboutEpisode({ about, commentaries, commentary, setCommentary }) {
+function AboutEpisode({
+  description,
+  commentaries,
+  commentary,
+  setCommentary,
+}) {
   return (
     <Flex direction="column" height={`calc(100% - ${GRID.GET(13)})`}>
       <Flex direction="column">
@@ -18,7 +23,7 @@ function AboutEpisode({ about, commentaries, commentary, setCommentary }) {
           Sobre
         </Text>
         <Text size="x_small" color={COLORS.DARK_500} mt={GRID.GET(1)}>
-          {about}
+          {description}
         </Text>
       </Flex>
       <Flex
@@ -60,7 +65,7 @@ function AboutEpisode({ about, commentaries, commentary, setCommentary }) {
 }
 
 AboutEpisode.propTypes = {
-  about: PropTypes.string,
+  description: PropTypes.string,
   // eslint-disable-next-line
   commentaries: PropTypes.array,
   commentary: PropTypes.string,

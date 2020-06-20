@@ -38,7 +38,6 @@ const StyledIcon = styled.img`
 const loadIcon = require.context('../../assets/svg', false, /\.svg$/);
 
 const Icon = ({ name, size = 'medium', ...props }) => {
-  console.log(name);
   const icon = loadIcon(`./${name}.svg`);
 
   return <StyledIcon src={icon} size={size} {...props} />;

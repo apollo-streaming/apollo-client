@@ -1,75 +1,31 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import EpisodeListComponent from '../../components/Podcast/EpisodeList/index';
+import * as PlayerActions from '../../store/modules/player/actions';
 
-const STATIC_EPISODE_LIST = [
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-  {
-    image:
-      'https://spotlight.radiopublic.com/images/thumbnail?url=https%3A%2F%2Fjovemnerd.com.br%2Fwp-content%2Fuploads%2F2019%2F09%2FNC_691_The-boys_Fomato-1400x1400.jpg',
-    title: 'NerdCast 229 - Duplipensamentos sobre 1984',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis reprehenderit dolores, cum suscipit dolore aut, eveniet dolor cumque deleniti officia, earum vitae inventore aperiam delectus quia sit atque dignissimos soluta.',
-  },
-];
+function EpisodeList({ episodes, podcast }) {
+  const dispatch = useDispatch();
 
-function EpisodeList() {
-  return <EpisodeListComponent items={STATIC_EPISODE_LIST} />;
+  const onPlayEpisode = (episode) => {
+    dispatch(PlayerActions.setActive(dispatch, episode));
+    // @TODO Include dispatch action
+  };
+
+  const episodeList = episodes.map((ep) => ({
+    ...ep,
+    onClick: () => onPlayEpisode({ ...ep, podcast }),
+  }));
+
+  return <EpisodeListComponent items={episodeList} podcast={podcast} />;
 }
+
+EpisodeList.propTypes = {
+  // eslint-disable-next-line
+  episodes: PropTypes.array,
+  // eslint-disable-next-line
+  podcast: PropTypes.object,
+};
 
 export default EpisodeList;

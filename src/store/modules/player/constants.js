@@ -1,0 +1,11 @@
+const INCREMENT_CURRENT_TIME = '@player/INCREMENT_CURRENT_TIME';
+const SET_ACTIVE = '@player/SET_ACTIVE';
+const SET_CURRENT_TIME = '@player/SET_CURRENT_TIME';
+const TOGGLE_PLAY = '@player/TOGGLE_PLAY';
+
+export const Actions = {
+  INCREMENT_CURRENT_TIME,
+  SET_ACTIVE,
+  SET_CURRENT_TIME,
+  TOGGLE_PLAY,
+};

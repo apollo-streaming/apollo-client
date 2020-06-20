@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import search from './search/reducer';
-import episodes from './episodes/reducer';
-import podcasts from './podcasts/reducer';
-import auth from './auth/reducer';
+import episode from './episode/reducer';
+import podcast from './podcast/reducer';
+import player from './player/reducer';
+import sidebar from './sidebar/reducer';
 
-export default combineReducers({ search, episodes, podcasts, auth });
+export default combineReducers({ episode, podcast, player, sidebar });

@@ -24,7 +24,7 @@ function HomeList({
         </Text>
       )}
       <List spaceBetween={GRID.GET(2)} horizontal>
-        {items.map(({ image, liked = false, title, subtitle }) => (
+        {items.map(({ image, liked = false, title, subtitle, link }) => (
           <ListItem>
             <ListCard
               bgImage={image}
@@ -38,6 +38,7 @@ function HomeList({
                 title,
                 subtitle,
                 liked,
+                link,
               }}
             />
           </ListItem>

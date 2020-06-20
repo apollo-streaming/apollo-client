@@ -8,14 +8,14 @@ import AboutEpisode from './Content/AboutEpisode';
 
 function Sidebar({
   username,
-  onClose,
+  onGoBack,
   recentlyPlayed = [],
   aboutEpisode = {},
 }) {
   return (
     <SidebarContainer shouldHavePb={!Object.keys(aboutEpisode).length}>
-      <SidebarControls username={username} onClose={onClose} />
-      {!!recentlyPlayed.length && <RecentlyPlayed items={recentlyPlayed} />}
+      <SidebarControls username={username} onGoBack={onGoBack} />
+      {!!recentlyPlayed && <RecentlyPlayed items={recentlyPlayed} />}
       {!!Object.keys(aboutEpisode).length && <AboutEpisode {...aboutEpisode} />}
     </SidebarContainer>
   );
@@ -23,7 +23,7 @@ function Sidebar({
 
 Sidebar.propTypes = {
   username: PropTypes.string,
-  onClose: PropTypes.func,
+  onGoBack: PropTypes.func,
   // eslint-disable-next-line
   recentlyPlayed: PropTypes.array,
   // eslint-disable-next-line

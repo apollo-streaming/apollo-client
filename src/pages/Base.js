@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GRID from '../design-system/GRID';
-import Player from '../components/Player';
+import Player from '../containers/Player';
 
 const Container = styled.section`
   margin-top: ${GRID.GET(18)};

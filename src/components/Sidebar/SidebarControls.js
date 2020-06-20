@@ -8,11 +8,11 @@ import Button from '../../design-system/Button';
 import Icon from '../../design-system/Icon';
 import { Text } from '../../design-system/Typography';
 
-function SidebarControls({ onClose, username }) {
+function SidebarControls({ onGoBack, username }) {
   return (
     <Flex justifyContent="space-between" mb={GRID.GET(8)}>
       <Flex alignItems="center">
-        <Button transparent pointer onClick={onClose} padding="0px">
+        <Button transparent pointer onClick={onGoBack} padding="0px">
           <Icon name="back" />
         </Button>
         <Text
@@ -34,7 +34,7 @@ function SidebarControls({ onClose, username }) {
 
 SidebarControls.propTypes = {
   username: PropTypes.string,
-  onClose: PropTypes.func,
+  onGoBack: PropTypes.func,
 };
 
 export default SidebarControls;

@@ -19,19 +19,16 @@ const PlayerContainer = styled(Flex)`
   box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.3);
 `;
 
-const STATIC_INFO = {
-  episode: {
-    image: 'https://i1.sndcdn.com/avatars-000445864257-cuwg3m-t500x500.jpg',
-    podcast: 'The Ground Up Show',
-    episode: 'Ep. X - Lorem ipsum dolor sit amet',
-  },
-};
-
-function Player({ episodeInfo = STATIC_INFO }) {
+function Player({ episodeInfo, isPlaying, onPlay }) {
   return (
     <PlayerContainer justifyContent="space-between">
-      <EpisodeInfo {...episodeInfo.episode} />
-      <PlayerControls current={2734} duration={3000} />
+      <EpisodeInfo {...episodeInfo} />
+      <PlayerControls
+        current={episodeInfo.current}
+        duration={episodeInfo.duration}
+        isPlaying={isPlaying}
+        onPlay={onPlay}
+      />
       <SideControls />
     </PlayerContainer>
   );
@@ -40,6 +37,8 @@ function Player({ episodeInfo = STATIC_INFO }) {
 Player.propTypes = {
   // eslint-disable-next-line
   episodeInfo: PropTypes.object,
+  isPlaying: PropTypes.bool,
+  onPlay: PropTypes.func,
 };
 
 export default Player;

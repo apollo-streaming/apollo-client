@@ -9,6 +9,7 @@ import Icon from '../../../../design-system/Icon';
 import Flex from '../../../../design-system/Flex';
 import { Text } from '../../../../design-system/Typography';
 import { limitCharacters } from '../../../../utils/functional';
+import Link from '../../../../design-system/Link';
 
 function getWidthDifference(first, second) {
   const firstNum = first.split('px')[0];
@@ -50,6 +51,7 @@ function ListCard({
   squared = false,
   height,
   width = height,
+  link,
 }) {
   return (
     <Card bgImage={bgImage} {...{ squared, width, height }}>
@@ -58,14 +60,29 @@ function ListCard({
       )}
 
       <Flex direction="column" role="definition">
-        <Text
-          maxWidth={getWidthDifference(width, GRID.GET(4))}
-          color={COLORS.CLEAR_100}
-          weight="bold"
-          alt={title}
-        >
-          {titleMaxSize ? limitCharacters(title, titleMaxSize, true) : title}
-        </Text>
+        {link ? (
+          <Link
+            label={
+              titleMaxSize ? limitCharacters(title, titleMaxSize, true) : title
+            }
+            to={link}
+            labelProperties={{
+              maxWidth: getWidthDifference(width, GRID.GET(4)),
+              color: COLORS.CLEAR_100,
+              weight: 'bold',
+              alt: title,
+            }}
+          />
+        ) : (
+          <Text
+            maxWidth={getWidthDifference(width, GRID.GET(4))}
+            color={COLORS.CLEAR_100}
+            weight="bold"
+            alt={title}
+          >
+            {titleMaxSize ? limitCharacters(title, titleMaxSize, true) : title}
+          </Text>
+        )}
         {subtitle && (
           <Text
             maxWidth={getWidthDifference(width, GRID.GET(4))}
@@ -86,6 +103,7 @@ function ListCard({
 ListCard.propTypes = {
   displayLikedBtn: PropTypes.bool,
   liked: PropTypes.bool,
+  link: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   bgImage: PropTypes.string,

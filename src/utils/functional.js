@@ -33,8 +33,8 @@ export const transformSecondsToTimeframe = (time) => {
   seconds = minutes > 60 ? minutes % 60 : seconds;
 
   return `${hours ? `${hours}:` : ''}${
-    minutes ? `${`0${minutes}`.substr(-2)}:` : ''
-  }${`0${seconds}`.substr(-2)}`;
+    minutes ? `${`00${minutes}`.substr(-2)}:` : '00:'
+  }${`00${seconds}`.substr(-2)}`;
 };
 
 export default { transformQueryParamsToObject };

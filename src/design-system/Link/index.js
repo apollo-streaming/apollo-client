@@ -11,16 +11,23 @@ function Link({
   labelProperties = { size: 'large', weight: 'bold' },
   to,
   icon = false,
+  children,
 }) {
   return (
-    <Flex>
-      <RouterLink to={to} style={{ width: '100%' }}>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Text {...labelProperties}>{label}</Text>
-          {icon && <Icon name="right-arrow" />}
+    <>
+      {children ? (
+        <RouterLink to={to}>{children}</RouterLink>
+      ) : (
+        <Flex>
+          <RouterLink to={to} style={{ width: '100%' }}>
+            <Flex justifyContent="space-between" alignItems="center">
+              <Text {...labelProperties}>{label}</Text>
+              {icon && <Icon name="right-arrow" />}
+            </Flex>
+          </RouterLink>
         </Flex>
-      </RouterLink>
-    </Flex>
+      )}
+    </>
   );
 }
 
@@ -30,6 +37,7 @@ Link.propTypes = {
   labelProperties: PropTypes.object,
   to: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
   icon: PropTypes.bool,
+  children: PropTypes.node,
 };
 
 export default Link;

@@ -1,16 +1,15 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
 import HeadlineComponent from '../../components/Podcast/Headline';
 
-const STATIC_PODCAST = {
-  image:
-    'https://dropsdejogos.uai.com.br/wp-content/uploads/sites/10/2019/11/nerdcast.jpg',
-  podcast: 'Nerdcast',
-  episodes: [],
-};
-
-function Headline() {
-  return <HeadlineComponent {...STATIC_PODCAST} />;
+function Headline({ podcast }) {
+  return <HeadlineComponent {...podcast} />;
 }
+
+Headline.propTypes = {
+  // eslint-disable-next-line
+  podcast: PropTypes.object,
+};
 
 export default Headline;

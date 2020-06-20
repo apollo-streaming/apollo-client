@@ -8,14 +8,20 @@ import Flex from '../../design-system/Flex';
 import { transformSecondsToTimeframe } from '../../utils/functional';
 import ProgressBar from './ProgressBar';
 
-function PlayerControls({ current, duration }) {
+function PlayerControls({ current, duration, isPlaying, onPlay }) {
   return (
     <Flex direction="column">
       <Flex justifyContent="center" alignItems="center" mb={GRID.GET(1)}>
         <Icon name="shuffle" />
         <Flex alignItems="center" ml={GRID.GET(12)} mr={GRID.GET(12)}>
           <Icon name="previous" />
-          <Icon size="x_large" ml={GRID.GET(3)} mr={GRID.GET(3)} name="play" />
+          <Icon
+            size="x_large"
+            ml={GRID.GET(3)}
+            mr={GRID.GET(3)}
+            name={isPlaying ? 'pause' : 'play'}
+            onClick={onPlay}
+          />
           <Icon name="next" />
         </Flex>
         <Icon name="repeat" />
@@ -24,7 +30,11 @@ function PlayerControls({ current, duration }) {
         <Text size="x_small" color={COLORS.DARK_500}>
           {transformSecondsToTimeframe(current)}
         </Text>
-        <ProgressBar progress={50} ml={GRID.GET(3)} mr={GRID.GET(3)} />
+        <ProgressBar
+          progress={Math.floor((current / duration) * 100)}
+          ml={GRID.GET(3)}
+          mr={GRID.GET(3)}
+        />
         <Text size="x_small" color={COLORS.DARK_500}>
           {transformSecondsToTimeframe(duration)}
         </Text>
@@ -36,6 +46,8 @@ function PlayerControls({ current, duration }) {
 PlayerControls.propTypes = {
   current: PropTypes.number,
   duration: PropTypes.number,
+  isPlaying: PropTypes.bool,
+  onPlay: PropTypes.func,
 };
 
 export default PlayerControls;
