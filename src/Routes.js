@@ -5,6 +5,7 @@ import Podcast from './pages/Podcast';
 import Playlist from './pages/Playlist';
 import Following from './pages/Following';
 import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 function Routes() {
   return (
@@ -14,6 +15,7 @@ function Routes() {
       <Route path="/playlists" component={Playlist} />
       <Route path="/following" component={Following} />
       <Route path="/signin" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
       {/* <Route path="/" exact component={Home} />
       <Route path="/busca" component={SearchResults} />
       <Route path="/sign-in" component={SignIn} />

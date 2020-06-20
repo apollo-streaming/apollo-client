@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import SignInComponent from '../../components/SignIn';
+import SignUpComponent from '../../components/SignUp';
 import * as SidebarActions from '../../store/modules/sidebar/actions';
 
-function SignIn() {
+function SignUp() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(SidebarActions.changeState('signIn'));
-    dispatch(SidebarActions.toggle(true));
+    dispatch(SidebarActions.changeState('signUp'));
+    dispatch(SidebarActions.toggle());
   }, []);
-  return <SignInComponent />;
+  return <SignUpComponent />;
 }
 
-export default SignIn;
+export default SignUp;

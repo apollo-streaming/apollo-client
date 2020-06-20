@@ -10,6 +10,7 @@ const fontSizes = {
 };
 
 const fontWeights = {
+  light: '200',
   regular: '400',
   semibold: '600',
   bold: '800',
@@ -29,6 +30,7 @@ const TextWrapper = styled.p`
   margin-left: ${(props) => props.ml || 'unset'};
   margin-bottom: ${(props) => props.mb || 'unset'};
   margin-top: ${(props) => props.mt || 'unset'};
+  display: ${({ display }) => display || 'block'};
 `;
 
 export default TextWrapper;

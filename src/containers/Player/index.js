@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import PlayerComponent from '../../components/Player';
@@ -7,20 +7,18 @@ import {
   useCurrentTimeInPlayer,
   useCurrentEpisode,
   useIsPlaying,
+  useStartedPlaying,
 } from '../../store/modules/player/selectors';
 
 function Player() {
-  const [timeInterval, setTimeInterval] = useState();
+  const audioRef = useRef();
+  const [timeInterval, setTimeInterval] = useState(0);
   const dispatch = useDispatch();
   const isPlaying = useIsPlaying();
+  const startedPlaying = useStartedPlaying();
   const current = useCurrentTimeInPlayer();
   const episode = useCurrentEpisode();
   const shouldKeepUpdating = episode ? current < episode.duration : false;
-  console.log({ shouldKeepUpdating });
-
-  const onPlay = () => {
-    dispatch(PlayerActions.togglePlay(dispatch, isPlaying));
-  };
 
   useEffect(() => {
     if (!shouldKeepUpdating) {
@@ -35,17 +33,44 @@ function Player() {
     }
   }, [isPlaying, shouldKeepUpdating, dispatch]);
 
+  useEffect(() => {
+    console.log('===========================');
+    console.log({ startedPlaying, isPlaying });
+    console.log('===========================');
+    if (isPlaying && !startedPlaying) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+      dispatch(PlayerActions.setStartedPlaying(true));
+    }
+  }, [isPlaying, startedPlaying]);
+
   if (!isPlaying && timeInterval) {
     clearInterval(timeInterval);
   }
 
+  const onPlay = () => {
+    dispatch(PlayerActions.togglePlay(dispatch, isPlaying));
+    console.log({ audioRef });
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+  };
+
   return (
     episode && (
-      <PlayerComponent
-        episodeInfo={{ ...episode, current }}
-        onPlay={onPlay}
-        isPlaying={isPlaying}
-      />
+      <>
+        <PlayerComponent
+          episodeInfo={{ ...episode, current }}
+          onPlay={onPlay}
+          isPlaying={isPlaying}
+        />
+        <audio
+          ref={audioRef}
+          src="https://nerdcast-cdn.jovemnerd.com.br/nerdcast_549_RPG_cthulhu_1.mp3"
+        />
+      </>
     )
   );
 }

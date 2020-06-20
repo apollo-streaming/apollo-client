@@ -8,6 +8,7 @@ import GRID from '../../design-system/GRID';
 import { H1, Text } from '../../design-system/Typography';
 import Flex from '../../design-system/Flex';
 import Button from '../../design-system/Button';
+import { useIsSidebarOpened } from '../../store/modules/sidebar/selectors';
 
 const HeadlineContainer = styled(Flex)`
   background-image: ${({ bg }) => `linear-gradient(
@@ -21,7 +22,7 @@ const HeadlineContainer = styled(Flex)`
   height: 320px;
   position: absolute;
   top: 0;
-  width: calc(100% - 464px);
+  width: ${({ isFullWidth }) => (isFullWidth ? '100%' : 'calc(100% - 464px)')};
   left: 0;
   z-index: -1;
   padding-top: ${GRID.GET(16)};
@@ -33,8 +34,9 @@ const HeadlineContainer = styled(Flex)`
 `;
 
 function Headline({ image, podcast }) {
+  const isFullWidth = !useIsSidebarOpened();
   return (
-    <HeadlineContainer bg={image}>
+    <HeadlineContainer isFullWidth={isFullWidth} bg={image}>
       <Flex direction="column" justifyContent="flex-end">
         <H1
           size="x_large"

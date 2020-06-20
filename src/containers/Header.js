@@ -7,8 +7,6 @@ function Header() {
   const sidebarState = useCurrentState();
   let displayLogo = true;
 
-  console.log(sidebarState);
-
   if (sidebarState === 'signIn' || sidebarState === 'signUp') {
     displayLogo = false;
   }

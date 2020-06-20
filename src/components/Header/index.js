@@ -8,11 +8,12 @@ import Link from '../../design-system/Link';
 import { HeaderContainer } from './styles';
 import Logo from '../Generic/Logo';
 
-function Header({ shouldDisplayLogo }) {
+function Header({ displayLogo }) {
+  console.log({ displayLogo });
   return (
     <HeaderContainer>
       <Flex alignItems="center" justifyContent="space-between">
-        {shouldDisplayLogo && (
+        {displayLogo && (
           <>
             <Logo />
             <Link
@@ -31,7 +32,7 @@ function Header({ shouldDisplayLogo }) {
 }
 
 Header.propTypes = {
-  shouldDisplayLogo: PropTypes.bool,
+  displayLogo: PropTypes.bool,
 };
 
 export default Header;

@@ -17,6 +17,15 @@ const StyledInput = styled.input`
   width: ${({ width }) => width || 'unset'};
   font-size: ${GRID.GET(2)};
 
+  margin-left: ${({ marginLeft, ml, margin }) =>
+    marginLeft || ml || margin || 'unset'};
+  margin-right: ${({ marginRight, mr, margin }) =>
+    marginRight || mr || margin || 'unset'};
+  margin-top: ${({ marginTop, mt, margin }) =>
+    marginTop || mt || margin || 'unset'};
+  margin-bottom: ${({ marginBottom, mb, margin }) =>
+    marginBottom || mb || margin || 'unset'};
+
   &::placeholder {
     color: ${COLORS.GRAY_500};
   }
@@ -43,7 +52,7 @@ const Input = ({ icon, onIconClick, ...props }) => {
             <Icon name={icon} />
           </StyledInputButton>
         ) : (
-          <StyledInputButton transparent padding="0px">
+          <StyledInputButton type="button" transparent padding="0px">
             <Icon name={icon} />
           </StyledInputButton>
         ))}

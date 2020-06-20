@@ -11,3 +11,7 @@ export function useCurrentEpisode() {
 export function useIsPlaying() {
   return useSelector((state) => state.player.playing);
 }
+
+export function useStartedPlaying() {
+  return useSelector((state) => state.player.startedPlaying);
+}

@@ -12,7 +12,7 @@ function PlayerControls({ current, duration, isPlaying, onPlay }) {
   return (
     <Flex direction="column">
       <Flex justifyContent="center" alignItems="center" mb={GRID.GET(1)}>
-        <Icon name="shuffle" />
+        {/* <Icon name="shuffle" /> */}
         <Flex alignItems="center" ml={GRID.GET(12)} mr={GRID.GET(12)}>
           <Icon name="previous" />
           <Icon

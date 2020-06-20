@@ -17,9 +17,11 @@ const generateButton = (
   border-radius: ${({ borderRadius, round }) =>
     round ? '1000vw' : borderRadius || GRID.GET(1)};
   cursor: ${({ pointer }) => pointer && 'pointer'};
+  width: ${({ width }) => width || 'auto'};
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: ${({ hoverable }) =>

@@ -8,6 +8,13 @@ export function setCurrentTime(time) {
   };
 }
 
+export function setStartedPlaying(playing) {
+  return {
+    type: Actions.SET_STARTED_PLAYING,
+    payload: { playing },
+  };
+}
+
 export function incrementCurrentTime() {
   return {
     type: Actions.INCREMENT_CURRENT_TIME,
@@ -17,6 +24,7 @@ export function incrementCurrentTime() {
 export function setActive(dispatch, episode) {
   dispatch(SidebarActions.changeState('displayEpisodeInfo'));
   dispatch(setCurrentTime(0));
+  dispatch(setStartedPlaying(false));
   return {
     type: Actions.SET_ACTIVE,
     payload: { episode },

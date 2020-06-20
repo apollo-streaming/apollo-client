@@ -9,9 +9,12 @@ export const SidebarContainer = styled.nav`
   right: 0;
   width: 464px;
   height: 100%;
+  overflow-y: scroll;
 
-  background-color: ${COLORS.GRAY_300};
-  padding-top: ${GRID.GET(8)};
+  background-color: ${({ shouldRenderLogo }) =>
+    shouldRenderLogo ? COLORS.CLEAR_100 : COLORS.GRAY_300};
+  padding-top: ${({ shouldRenderLogo }) =>
+    shouldRenderLogo ? GRID.GET(13) : GRID.GET(8)};
   padding-right: ${GRID.GET(6)};
   padding-bottom: ${GRID.GET(2)};
   padding-left: ${GRID.GET(6)};

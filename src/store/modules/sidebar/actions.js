@@ -1,8 +1,9 @@
 import { Actions } from './constants';
 
-export const toggle = () => {
+export const toggle = (to = null) => {
   return {
     type: Actions.TOGGLE,
+    payload: { to },
   };
 };
 
