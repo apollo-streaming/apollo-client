@@ -7,7 +7,7 @@ import { Router } from 'react-router-dom';
 import './config/ReactotronConfig';
 
 import Routes from './Routes';
-import Header from './components/Header';
+import Header from './containers/Header';
 import Sidebar from './containers/Sidebar';
 
 import { store, persistor } from './store';

@@ -13,8 +13,10 @@ const sizes = {
 };
 
 const StyledIcon = styled.img`
-  height: ${({ size }) => (size.includes('px') ? size : sizes[size])};
-  width: ${({ size }) => (size.includes('px') ? size : sizes[size])};
+  height: ${({ height, size }) =>
+    height || (size.includes('px') ? size : sizes[size])};
+  width: ${({ width, size }) =>
+    width || (size.includes('px') ? size : sizes[size])};
 
   padding-left: ${({ paddingLeft, pl, padding }) =>
     paddingLeft || pl || padding || 'unset'};

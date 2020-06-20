@@ -5,7 +5,7 @@ import List from './List';
 import { H1 } from '../../design-system/Typography';
 import GRID from '../../design-system/GRID';
 
-function Playlist({ following }) {
+function Following({ following }) {
   return (
     <>
       <H1 size="x_large" weight="bold" mb={GRID.GET(3)}>
@@ -16,9 +16,9 @@ function Playlist({ following }) {
   );
 }
 
-Playlist.propTypes = {
+Following.propTypes = {
   // eslint-disable-next-line
   following: PropTypes.array,
 };
 
-export default Playlist;
+export default Following;

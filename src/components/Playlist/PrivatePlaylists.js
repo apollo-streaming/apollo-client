@@ -9,7 +9,7 @@ function PrivatePlaylists({ items }) {
     <HomeList
       cardDimensions={{ height: GRID.GET(31), width: GRID.GET(25) }}
       items={items}
-      label="Públicas"
+      label="Privadas"
     />
   );
 }

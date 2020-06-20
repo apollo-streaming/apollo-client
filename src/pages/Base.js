@@ -6,12 +6,14 @@ import GRID from '../design-system/GRID';
 import Player from '../containers/Player';
 
 const Container = styled.section`
-  margin-top: ${GRID.GET(18)};
-  padding: ${`0 ${GRID.GET(7)} ${GRID.GET(2)} ${GRID.GET(10)}`};
+  margin-top: ${({ noPadding }) => (noPadding ? '0px' : GRID.GET(18))};
+  padding: ${({ noPadding }) =>
+    noPadding ? '0' : `0 ${GRID.GET(7)} ${GRID.GET(2)} ${GRID.GET(10)}`};
   /* Adicionar dinamicidade para caso a sidebar estiver fechada */
   width: calc(100% - 464px);
-  max-height: ${`calc(100vh - ${GRID.GET(18)})`};
-  overflow-y: scroll;
+  max-height: ${({ noPadding }) =>
+    noPadding ? '100vh' : `calc(100vh - ${GRID.GET(18)})`};
+  overflow-y: ${({ noPadding }) => (noPadding ? 'hidden' : 'scroll')};
 
   &::-webkit-scrollbar {
     width: 0px;
@@ -26,16 +28,17 @@ const Container = styled.section`
   }
 `;
 
-function Base({ children }) {
+function Base({ noPadding = false, children }) {
   return (
     <>
-      <Container>{children}</Container>
+      <Container {...{ noPadding }}>{children}</Container>
       <Player />
     </>
   );
 }
 
 Base.propTypes = {
+  noPadding: PropTypes.bool,
   children: PropTypes.node,
 };
 

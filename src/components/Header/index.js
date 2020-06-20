@@ -1,38 +1,37 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
 import COLORS from '../../design-system/COLORS';
-import GRID from '../../design-system/GRID';
-import Button from '../../design-system/Button';
 import Flex from '../../design-system/Flex';
-import Icon from '../../design-system/Icon';
 import Link from '../../design-system/Link';
 
 import { HeaderContainer } from './styles';
+import Logo from '../Generic/Logo';
 
-function Header() {
+function Header({ shouldDisplayLogo }) {
   return (
     <HeaderContainer>
-      <Flex justifyContent="space-between">
-        <Flex alignItems="center">
-          <Icon name="logo" />
-          <Link
-            to="/"
-            label="Apollo"
-            labelProperties={{
-              color: COLORS.YELLOW_300,
-              ml: GRID.GET(2),
-              size: 'x_large',
-              weight: 'bold',
-            }}
-          />
-        </Flex>
-
-        <Button hoverable transparent round pointer padding={GRID.GET(1)}>
-          <Icon name="menu" />
-        </Button>
+      <Flex alignItems="center" justifyContent="space-between">
+        {shouldDisplayLogo && (
+          <>
+            <Logo />
+            <Link
+              to="/signin"
+              label="Entrar"
+              labelProperties={{
+                color: COLORS.DARK_900,
+                weight: 'semibold',
+              }}
+            />
+          </>
+        )}
       </Flex>
     </HeaderContainer>
   );
 }
+
+Header.propTypes = {
+  shouldDisplayLogo: PropTypes.bool,
+};
 
 export default Header;

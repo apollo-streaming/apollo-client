@@ -1,6 +1,10 @@
 import React from 'react';
 
 import PlaylistComponent from '../../components/Playlist';
+import {
+  useGetPrivatePlaylists,
+  useGetPublicPlaylists,
+} from '../../store/modules/playlist/selectors';
 
 const STATIC_PRIVATE_PLAYLISTS = [
   {
@@ -24,8 +28,8 @@ const STATIC_PRIVATE_PLAYLISTS = [
 const STATIC_PUBLIC_PLAYLISTS = STATIC_PRIVATE_PLAYLISTS;
 
 function Playlist() {
-  const privatePlaylists = STATIC_PRIVATE_PLAYLISTS;
-  const publicPlaylists = STATIC_PUBLIC_PLAYLISTS;
+  const privatePlaylists = useGetPrivatePlaylists();
+  const publicPlaylists = useGetPublicPlaylists();
 
   return <PlaylistComponent {...{ privatePlaylists, publicPlaylists }} />;
 }
