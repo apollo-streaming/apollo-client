@@ -3,6 +3,8 @@ import { Actions } from './constants';
 const INITIAL_STATE = {
   display: false,
   playing: false,
+  audio: null,
+  intervalID: null,
   startedPlaying: false,
   episode: null,
   time: 0,
@@ -16,6 +18,11 @@ export default function reducer(state = INITIAL_STATE, action) {
       const { payload } = action;
 
       return { ...state, time: payload.time };
+    }
+    case Actions.SET_INTERVAL_ID: {
+      const { payload } = action;
+
+      return { ...state, intervalID: payload.id };
     }
     case Actions.SET_STARTED_PLAYING: {
       const { payload } = action;

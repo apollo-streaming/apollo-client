@@ -5,26 +5,22 @@ import GRID from '../../design-system/GRID';
 import Flex from '../../design-system/Flex';
 import Input from '../../design-system/Input';
 
-function Search({ search, setSearch, onSubmit }) {
+function Search({ search, onSearch }) {
   return (
     <Flex justifyContent="space-between">
-      <form onSubmit={onSubmit}>
-        <Input
-          icon="search"
-          placeholder="O que você quer ouvir?"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          width={GRID.GET(60)}
-        />
-      </form>
+      <Input
+        placeholder="O que você quer ouvir?"
+        value={search}
+        onChange={(e) => onSearch(e.target.value)}
+        width={GRID.GET(60)}
+      />
     </Flex>
   );
 }
 
 Search.propTypes = {
   search: PropTypes.string,
-  setSearch: PropTypes.func,
-  onSubmit: PropTypes.func,
+  onSearch: PropTypes.func,
 };
 
 export default Search;

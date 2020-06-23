@@ -1,0 +1,5 @@
+const SET_SEARCHING = '@search/SET_SEARCHING';
+const SEARCH_FROM_TEXT = '@search/SEARCH_FROM_TEXT';
+const SET_RESULTS = '@search/SET_RESULTS';
+
+export const Actions = { SET_SEARCHING, SEARCH_FROM_TEXT, SET_RESULTS };

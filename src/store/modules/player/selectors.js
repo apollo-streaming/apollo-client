@@ -15,3 +15,11 @@ export function useIsPlaying() {
 export function useStartedPlaying() {
   return useSelector((state) => state.player.startedPlaying);
 }
+
+export function useAudioRef() {
+  return useSelector((state) => state.player.audio);
+}
+
+export function useIntervalID() {
+  return useSelector((state) => state.player.intervalID);
+}

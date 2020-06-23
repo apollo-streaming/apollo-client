@@ -7,9 +7,9 @@ import Button from '../../design-system/Button';
 import Flex from '../../design-system/Flex';
 import Link from '../../design-system/Link';
 
-function Form() {
+function Form({ onSubmit }) {
   return (
-    <form>
+    <form onSubmit={(e) => onSubmit(e)}>
       <Text
         color={COLORS.DARK_900}
         weight="bold"
@@ -27,11 +27,22 @@ function Form() {
           :)
         </Text>
       </Text>
-      <Input placeholder="E-mail" width="100%" icon="mail" />
+      <Input name="email" placeholder="E-mail" width="100%" icon="mail" />
       <Flex mt={GRID.GET(2)} />
-      <Input placeholder="Nome de usuário" width="100%" icon="user" />
+      <Input
+        name="name"
+        placeholder="Nome de usuário"
+        width="100%"
+        icon="user"
+      />
       <Flex mt={GRID.GET(2)} />
-      <Input placeholder="Senha" width="100%" icon="lock" />
+      <Input
+        name="password"
+        type="password"
+        placeholder="Senha"
+        width="100%"
+        icon="lock"
+      />
       <Flex mb={GRID.GET(3)} />
       <Button primary width="100%">
         <Text color={COLORS.DARK_900} weight="bold">

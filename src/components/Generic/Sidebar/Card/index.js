@@ -17,7 +17,7 @@ const EpisodeBanner = styled.div`
   background-size: cover;
 `;
 
-function Card({ image, podcast, episode, stoppedAt, duration }) {
+function Card({ image, podcast, title, stoppedAt, duration }) {
   return (
     <Flex>
       <EpisodeBanner src={image} />
@@ -32,7 +32,7 @@ function Card({ image, podcast, episode, stoppedAt, duration }) {
           weight="semibold"
           size="x_small"
         >
-          {episode}
+          {title}
         </Text>
         <Flex mt={GRID.GET(1)}>
           <Icon name="clock" size="x_small" />
@@ -49,7 +49,7 @@ function Card({ image, podcast, episode, stoppedAt, duration }) {
 Card.propTypes = {
   image: PropTypes.string,
   podcast: PropTypes.string,
-  episode: PropTypes.string,
+  title: PropTypes.string,
   stoppedAt: PropTypes.number,
   duration: PropTypes.number,
 };

@@ -15,7 +15,6 @@ function RecentlyPlayed({ items }) {
           ))}
         </Toggle>
       )}
-      {/* <Link to="/following" label="Seus Favoritos" /> */}
       <Link icon to="/following" label="Artistas que sigo" />
       <Link icon to="/playlists" label="Minhas Playlists" />
     </>

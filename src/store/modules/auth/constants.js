@@ -1,0 +1,10 @@
+const SIGNUP_REQUEST = '@auth/SIGNUP_REQUEST';
+const SIGNIN_REQUEST = '@auth/SIGNIN_REQUEST';
+
+const UPDATE_DATA = '@auth/UPDATE_DATA';
+
+export const Actions = {
+  SIGNIN_REQUEST,
+  SIGNUP_REQUEST,
+  UPDATE_DATA,
+};

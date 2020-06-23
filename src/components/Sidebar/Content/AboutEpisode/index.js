@@ -12,7 +12,7 @@ import GRID from '../../../../design-system/GRID';
 
 function AboutEpisode({
   description,
-  commentaries,
+  commentaries = [],
   commentary,
   setCommentary,
 }) {

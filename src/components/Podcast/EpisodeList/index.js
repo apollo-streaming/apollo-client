@@ -8,10 +8,11 @@ import { Text } from '../../../design-system/Typography';
 import List from '../../../design-system/List';
 import ListItem from '../../../design-system/ListItem';
 import Card from './Card';
+import { useIsSearching } from '../../../store/modules/search/selector';
 
 const EpisodeListContainer = styled(Flex)`
   position: absolute;
-  top: ${GRID.GET(34)};
+  top: ${({ searching }) => (searching ? GRID.GET(20) : GRID.GET(34))};
   left: 0;
   height: calc(100vh - 320px);
   width: calc(100% - 464px);
@@ -20,17 +21,21 @@ const EpisodeListContainer = styled(Flex)`
   padding-right: ${GRID.GET(10)};
 `;
 
-function EpisodeList({ items }) {
+function EpisodeList({ items, noLabel, height = '100%' }) {
+  const searching = useIsSearching();
+
   return (
-    <EpisodeListContainer direction="column">
-      <Text weight="bold" size="x_large" mb={GRID.GET(3)}>
-        Episódios
-      </Text>
+    <EpisodeListContainer searching={searching} direction="column">
+      {!noLabel && (
+        <Text weight="bold" size="x_large" mb={GRID.GET(3)}>
+          Episódios
+        </Text>
+      )}
       <List
         vertical
         spaceBetween={GRID.GET(4)}
         noScrollbar
-        height="100%"
+        height={height}
         mb={GRID.GET(2)}
       >
         {items.map(({ image, title, description, onClick }) => (
@@ -46,6 +51,8 @@ function EpisodeList({ items }) {
 EpisodeList.propTypes = {
   // eslint-disable-next-line
   items: PropTypes.array,
+  noLabel: PropTypes.bool,
+  height: PropTypes.string,
 };
 
 export default EpisodeList;

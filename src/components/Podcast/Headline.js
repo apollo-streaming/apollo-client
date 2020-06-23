@@ -33,7 +33,7 @@ const HeadlineContainer = styled(Flex)`
   }
 `;
 
-function Headline({ image, podcast }) {
+function Headline({ image, name }) {
   const isFullWidth = !useIsSidebarOpened();
   return (
     <HeadlineContainer isFullWidth={isFullWidth} bg={image}>
@@ -44,20 +44,22 @@ function Headline({ image, podcast }) {
           color={COLORS.CLEAR_100}
           mb={GRID.GET(1)}
         >
-          {podcast}
+          {name}
         </H1>
-        <Flex>
-          <Button pointer secondary>
-            <Text weight="bold" size="small" color={COLORS.YELLOW_300}>
-              Seguir
-            </Text>
-          </Button>
-          <Button pointer primary ml={GRID.GET(2)}>
-            <Text weight="bold" size="small" color={COLORS.DARK_900}>
-              Apadrinhar
-            </Text>
-          </Button>
-        </Flex>
+        {false && (
+          <Flex>
+            <Button pointer secondary>
+              <Text weight="bold" size="small" color={COLORS.YELLOW_300}>
+                Seguir
+              </Text>
+            </Button>
+            <Button pointer primary ml={GRID.GET(2)}>
+              <Text weight="bold" size="small" color={COLORS.DARK_900}>
+                Apadrinhar
+              </Text>
+            </Button>
+          </Flex>
+        )}
       </Flex>
     </HeadlineContainer>
   );
@@ -65,7 +67,7 @@ function Headline({ image, podcast }) {
 
 Headline.propTypes = {
   image: PropTypes.string,
-  podcast: PropTypes.string,
+  name: PropTypes.string,
   // id: PropTypes.number,
 };
 

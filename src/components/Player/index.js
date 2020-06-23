@@ -16,7 +16,6 @@ const PlayerContainer = styled(Flex)`
   position: absolute;
   left: 0;
   bottom: 0;
-  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.3);
 `;
 
 function Player({ episodeInfo, isPlaying, onPlay }) {

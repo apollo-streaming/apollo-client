@@ -1,6 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 
+import { useDispatch } from 'react-redux';
 import { SidebarContainer } from './styles';
 import SidebarControls from './SidebarControls';
 import RecentlyPlayed from './Content/RecentlyPlayed';
@@ -8,6 +9,7 @@ import AboutEpisode from './Content/AboutEpisode';
 import Logo from '../Generic/Logo';
 import SignIn from '../SignIn/Form';
 import SignUp from '../SignUp/Form';
+import * as AuthActions from '../../store/modules/auth/actions';
 
 function Sidebar({
   username,
@@ -19,6 +21,34 @@ function Sidebar({
   signUp,
   onLogoClick,
 }) {
+  const dispatch = useDispatch();
+  const onSignUp = (e) => {
+    e.preventDefault();
+
+    const { target } = e;
+
+    const data = {
+      email: target.email.value,
+      name: target.name.value,
+      password: target.password.value,
+    };
+
+    dispatch(AuthActions.signupRequest(data));
+  };
+
+  const onSignIn = (e) => {
+    e.preventDefault();
+
+    const { target } = e;
+
+    const data = {
+      email: target.email.value,
+      password: target.password.value,
+    };
+
+    dispatch(AuthActions.signinRequest(data));
+  };
+
   return (
     <SidebarContainer
       {...{ shouldRenderLogo }}
@@ -28,14 +58,16 @@ function Sidebar({
         <SidebarControls username={username} onGoBack={onGoBack} />
       )}
       {shouldRenderLogo && <Logo onClick={onLogoClick} noAction />}
-      {!shouldRenderLogo && !!recentlyPlayed && (
-        <RecentlyPlayed items={recentlyPlayed} />
-      )}
+      {!shouldRenderLogo &&
+        !!recentlyPlayed &&
+        !Object.keys(aboutEpisode).length && (
+          <RecentlyPlayed items={recentlyPlayed} />
+        )}
       {!shouldRenderLogo && !!Object.keys(aboutEpisode).length && (
         <AboutEpisode {...aboutEpisode} />
       )}
-      {signIn && <SignIn />}
-      {signUp && <SignUp />}
+      {signIn && <SignIn onSubmit={onSignIn} />}
+      {signUp && <SignUp onSubmit={onSignUp} />}
     </SidebarContainer>
   );
 }

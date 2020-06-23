@@ -5,13 +5,15 @@ import HomeList from './Generic/Home/List';
 import GRID from '../design-system/GRID';
 
 function RecentlyAdded({ addedItems }) {
+  const items = addedItems.map((item) => ({ ...item, image: item.banner }));
+
   return (
     <HomeList
       squaredCards
       cardDimensions={{ height: GRID.GET(20) }}
-      items={addedItems}
+      items={items}
       label="Novos lançamentos"
-      titleMaxSize={16}
+      titleMaxSize={14}
       subtitleMaxSize={24}
     />
   );

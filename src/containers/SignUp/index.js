@@ -9,7 +9,7 @@ function SignUp() {
 
   useEffect(() => {
     dispatch(SidebarActions.changeState('signUp'));
-    dispatch(SidebarActions.toggle());
+    dispatch(SidebarActions.toggle(true));
   }, []);
   return <SignUpComponent />;
 }

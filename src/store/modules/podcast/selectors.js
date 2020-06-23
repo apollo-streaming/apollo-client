@@ -13,5 +13,5 @@ export function useGetRecentlyAddedPodcasts() {
 }
 
 export function useGetFollowing() {
-  return useSelector((state) => state.podcast.following);
+  return useSelector((state) => state.podcast.recommended);
 }

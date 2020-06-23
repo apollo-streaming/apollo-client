@@ -1,12 +1,28 @@
 const INITIAL_STATE = {
   recentlyPlayed: [
-    {
-      image: 'https://i1.sndcdn.com/avatars-000445864257-cuwg3m-t500x500.jpg',
-      podcast: 'The Ground Up Show',
-      episode: "94 - Success Doesn't Equal Happiness",
-      stoppedAt: 2737,
-      duration: 3000,
-    },
+    // {
+    //   commentaries: [
+    //     {
+    //       user: {
+    //         avatar:
+    //           'https://pbs.twimg.com/profile_images/1259877802217783299/1KQeL_de_400x400.jpg',
+    //         name: 'Thalles',
+    //       },
+    //       createdAt: new Date(),
+    //       content: 'Teste',
+    //     },
+    //   ],
+    //   stoppedAt: 45,
+    //   duration: 3000,
+    //   podcast: 'Nerdcast',
+    //   link:
+    //     'https://nerdcast-cdn.jovemnerd.com.br/nerdcast_549_RPG_cthulhu_1.mp3',
+    //   image:
+    //     'https://uploads.jovemnerd.com.br/wp-content/uploads/2018/01/NERDCASTESPECIALRPG01-1210x544.jpg',
+    //   title: 'RPG Call of Cthulhu 1: O mistério de William Faraday',
+    //   description:
+    //     '38 de dezembro de 2016. Um ano que todo mundo quer que acabe de uma vez por todas. Feliz ano novo! Junte-se a Alexandre Ottoni, Azaghal, Tucano, Rex, Carlos Voltor e Leonel Caldela em mais um Nerdcast Especial de RPG.',
+    // },
   ],
 };
 

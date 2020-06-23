@@ -15,6 +15,27 @@ export function setStartedPlaying(playing) {
   };
 }
 
+export function setIntervalID(id) {
+  return {
+    type: Actions.SET_INTERVAL_ID,
+    payload: { id },
+  };
+}
+
+export function setAudioRef(audio) {
+  return {
+    type: Actions.SET_AUDIO,
+    payload: { audio },
+  };
+}
+
+export function addToHistory(time, episodeId, jwt) {
+  return {
+    type: Actions.ADD_TO_HISTORY,
+    payload: { time, episodeId, jwt },
+  };
+}
+
 export function incrementCurrentTime() {
   return {
     type: Actions.INCREMENT_CURRENT_TIME,
@@ -23,7 +44,7 @@ export function incrementCurrentTime() {
 
 export function setActive(dispatch, episode) {
   dispatch(SidebarActions.changeState('displayEpisodeInfo'));
-  dispatch(setCurrentTime(0));
+  dispatch(setCurrentTime(episode.stoppedAt || 0));
   dispatch(setStartedPlaying(false));
   return {
     type: Actions.SET_ACTIVE,

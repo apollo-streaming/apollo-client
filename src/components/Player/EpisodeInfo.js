@@ -18,10 +18,10 @@ const Image = styled.div`
   margin-right: ${GRID.GET(3)};
 `;
 
-function EpisodeInfo({ image, podcast, title }) {
+function EpisodeInfo({ banner, podcast, title }) {
   return (
     <Flex>
-      <Image src={image} />
+      <Image src={banner} />
       <Flex direction="column" justifyContent="center">
         <Text size="large" weight="bold" mb={GRID.GET(1)}>
           {podcast}
