@@ -10,6 +10,7 @@ import Logo from '../Generic/Logo';
 import SignIn from '../SignIn/Form';
 import SignUp from '../SignUp/Form';
 import * as AuthActions from '../../store/modules/auth/actions';
+import history from '../../services/history';
 
 function Sidebar({
   username,
@@ -20,6 +21,7 @@ function Sidebar({
   signIn,
   signUp,
   onLogoClick,
+  isPlayingPodcast = false,
 }) {
   const dispatch = useDispatch();
   const onSignUp = (e) => {
@@ -34,6 +36,9 @@ function Sidebar({
     };
 
     dispatch(AuthActions.signupRequest(data));
+    setTimeout(() => {
+      history.push('/');
+    }, 500);
   };
 
   const onSignIn = (e) => {
@@ -47,12 +52,16 @@ function Sidebar({
     };
 
     dispatch(AuthActions.signinRequest(data));
+    setTimeout(() => {
+      history.push('/');
+    }, 500);
   };
 
   return (
     <SidebarContainer
       {...{ shouldRenderLogo }}
       shouldHavePb={!Object.keys(aboutEpisode).length}
+      isPlayingPodcast={isPlayingPodcast}
     >
       {!shouldRenderLogo && (
         <SidebarControls username={username} onGoBack={onGoBack} />
@@ -83,6 +92,7 @@ Sidebar.propTypes = {
   signIn: PropTypes.bool,
   signUp: PropTypes.bool,
   onLogoClick: PropTypes.func,
+  isPlayingPodcast: PropTypes.bool,
 };
 
 export default Sidebar;

@@ -24,25 +24,28 @@ function HomeList({
         </Text>
       )}
       <List spaceBetween={GRID.GET(2)} horizontal>
-        {items.map(({ image, liked = false, title, subtitle, link }) => (
-          <ListItem>
-            <ListCard
-              bgImage={image}
-              displayLikedBtn={!!liked}
-              squared={squaredCards}
-              key={title}
-              {...{
-                ...cardDimensions,
-                titleMaxSize,
-                subtitleMaxSize,
-                title,
-                subtitle,
-                liked,
-                link,
-              }}
-            />
-          </ListItem>
-        ))}
+        {items.map(
+          ({ image, liked = false, title, subtitle, link, onTitleClick }) => (
+            <ListItem>
+              <ListCard
+                bgImage={image}
+                displayLikedBtn={!!liked}
+                squared={squaredCards}
+                key={title}
+                {...{
+                  ...cardDimensions,
+                  titleMaxSize,
+                  subtitleMaxSize,
+                  title,
+                  subtitle,
+                  liked,
+                  link,
+                  onTitleClick,
+                }}
+              />
+            </ListItem>
+          )
+        )}
       </List>
     </Flex>
   );

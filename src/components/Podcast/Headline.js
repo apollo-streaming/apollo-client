@@ -33,7 +33,7 @@ const HeadlineContainer = styled(Flex)`
   }
 `;
 
-function Headline({ image, name }) {
+function Headline({ image, name, onFollow, shouldDisplayFollowButton = true }) {
   const isFullWidth = !useIsSidebarOpened();
   return (
     <HeadlineContainer isFullWidth={isFullWidth} bg={image}>
@@ -46,20 +46,18 @@ function Headline({ image, name }) {
         >
           {name}
         </H1>
-        {false && (
-          <Flex>
-            <Button pointer secondary>
-              <Text weight="bold" size="small" color={COLORS.YELLOW_300}>
-                Seguir
-              </Text>
-            </Button>
-            <Button pointer primary ml={GRID.GET(2)}>
-              <Text weight="bold" size="small" color={COLORS.DARK_900}>
-                Apadrinhar
-              </Text>
-            </Button>
-          </Flex>
-        )}
+        <Flex>
+          <Button pointer secondary onClick={onFollow}>
+            <Text weight="bold" size="small" color={COLORS.YELLOW_300}>
+              {shouldDisplayFollowButton ? 'Seguir' : 'Deixar de Seguir'}
+            </Text>
+          </Button>
+          <Button pointer primary ml={GRID.GET(2)}>
+            <Text weight="bold" size="small" color={COLORS.DARK_900}>
+              Apadrinhar
+            </Text>
+          </Button>
+        </Flex>
       </Flex>
     </HeadlineContainer>
   );
@@ -69,6 +67,8 @@ Headline.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   // id: PropTypes.number,
+  onFollow: PropTypes.func,
+  shouldDisplayFollowButton: PropTypes.bool,
 };
 
 export default Headline;

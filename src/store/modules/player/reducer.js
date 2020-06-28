@@ -37,6 +37,15 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       return { ...state, episode: payload.episode, playing: true };
     }
+    case Actions.ADD_COMMENTARY_TO_ACTIVE: {
+      const { payload } = action;
+
+      const { episode } = state;
+
+      const commentaries = [...episode.commentaries, payload.commentary];
+
+      return { ...state, episode: { ...episode, commentaries } };
+    }
     case Actions.TOGGLE_PLAY: {
       return { ...state, playing: !state.playing };
     }

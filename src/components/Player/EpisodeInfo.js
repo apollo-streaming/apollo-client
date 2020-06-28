@@ -18,16 +18,18 @@ const Image = styled.div`
   margin-right: ${GRID.GET(3)};
 `;
 
-function EpisodeInfo({ banner, podcast, title }) {
+function EpisodeInfo({ banner, description, podcast, title }) {
   return (
     <Flex>
       <Image src={banner} />
       <Flex direction="column" justifyContent="center">
         <Text size="large" weight="bold" mb={GRID.GET(1)}>
-          {podcast}
+          {podcast || limitCharacters(title, 42, true)}
         </Text>
         <Text size="x_small" color={COLORS.DARK_500}>
-          {limitCharacters(title, 42, true)}
+          {!podcast && description
+            ? limitCharacters(description, 42, true)
+            : limitCharacters(title, 42, true)}
         </Text>
       </Flex>
     </Flex>
@@ -35,10 +37,11 @@ function EpisodeInfo({ banner, podcast, title }) {
 }
 
 EpisodeInfo.propTypes = {
-  image: PropTypes.string,
+  banner: PropTypes.string,
   // eslint-disable-next-line
   podcast: PropTypes.object,
   title: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default EpisodeInfo;

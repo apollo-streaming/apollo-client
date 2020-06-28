@@ -12,6 +12,27 @@ export function requestRecentlyAdded() {
   };
 }
 
+export function requestFollowing(jwt) {
+  return {
+    type: Actions.REQUEST_FOLLOWING,
+    payload: { jwt },
+  };
+}
+
+export function setFollowing(items) {
+  return {
+    type: Actions.SET_FOLLOWING,
+    payload: { items },
+  };
+}
+
+export function followOrUnfollow(podcastId, jwt) {
+  return {
+    type: Actions.FOLLOW_OR_UNFOLLOW,
+    payload: { podcastId, jwt },
+  };
+}
+
 export function request(name) {
   return {
     type: Actions.REQUEST_PODCAST,
@@ -37,5 +58,12 @@ export function setCurrent(item) {
   return {
     type: Actions.SET_CURRENT,
     payload: { item },
+  };
+}
+
+export function addCommentaryToCurrentEpisode(episodeId, commentary) {
+  return {
+    type: Actions.ADD_COMMENTARY_TO_CURRENT_EPISODE,
+    payload: { episodeId, commentary },
   };
 }

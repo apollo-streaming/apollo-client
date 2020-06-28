@@ -32,7 +32,7 @@ function Player() {
       const intervalID = setInterval(() => {
         if (isPlaying && shouldKeepUpdating) {
           dispatch(PlayerActions.incrementCurrentTime());
-          dispatch(PlayerActions.addToHistory(current, episode.id, jwt));
+          // dispatch(PlayerActions.addToHistory(current, episode.id, jwt));
         }
       }, 1000);
       dispatch(PlayerActions.setIntervalID(intervalID));

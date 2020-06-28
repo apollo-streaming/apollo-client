@@ -9,6 +9,7 @@ function List({ items }) {
     ...item,
     title: item.name,
     image: item.banner || item.image,
+    link: `/podcast?q=${item.name}`,
   }));
 
   return (

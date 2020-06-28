@@ -14,18 +14,23 @@ const EpisodeListContainer = styled(Flex)`
   position: absolute;
   top: ${({ searching }) => (searching ? GRID.GET(20) : GRID.GET(34))};
   left: 0;
-  height: calc(100vh - 320px);
+  height: ${({ isPlaying }) =>
+    isPlaying ? 'calc(100vh - 432px)' : 'calc(100vh - 320px)'};
   width: calc(100% - 464px);
   padding-top: ${GRID.GET(6)};
   padding-left: ${GRID.GET(10)};
   padding-right: ${GRID.GET(10)};
 `;
 
-function EpisodeList({ items, noLabel, height = '100%' }) {
+function EpisodeList({ items, noLabel, isPlaying, height = '100%' }) {
   const searching = useIsSearching();
 
   return (
-    <EpisodeListContainer searching={searching} direction="column">
+    <EpisodeListContainer
+      isPlaying={isPlaying}
+      searching={searching}
+      direction="column"
+    >
       {!noLabel && (
         <Text weight="bold" size="x_large" mb={GRID.GET(3)}>
           Episódios
@@ -52,6 +57,7 @@ EpisodeList.propTypes = {
   // eslint-disable-next-line
   items: PropTypes.array,
   noLabel: PropTypes.bool,
+  isPlaying: PropTypes.bool,
   height: PropTypes.string,
 };
 

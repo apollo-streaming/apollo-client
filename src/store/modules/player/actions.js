@@ -42,10 +42,19 @@ export function incrementCurrentTime() {
   };
 }
 
-export function setActive(dispatch, episode) {
-  dispatch(SidebarActions.changeState('displayEpisodeInfo'));
-  dispatch(setCurrentTime(episode.stoppedAt || 0));
-  dispatch(setStartedPlaying(false));
+export function addCommentaryToActive(commentary) {
+  return {
+    type: Actions.ADD_COMMENTARY_TO_ACTIVE,
+    payload: { commentary },
+  };
+}
+
+export function setActive(dispatch, episode, keepTime = false) {
+  if (!keepTime) {
+    dispatch(SidebarActions.changeState('displayEpisodeInfo'));
+    dispatch(setCurrentTime(episode.stoppedAt || 0));
+    dispatch(setStartedPlaying(false));
+  }
   return {
     type: Actions.SET_ACTIVE,
     payload: { episode },

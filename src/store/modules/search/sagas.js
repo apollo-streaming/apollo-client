@@ -7,9 +7,9 @@ export function* searchFromText({ payload }) {
 
   const data = yield call(fetch, `http://localhost:4567/search?q=${text}`, {
     method: 'GET',
-    mode: 'cors',
-    cache: 'default',
   });
+
+  console.log({ text });
 
   const response = yield data.json();
 

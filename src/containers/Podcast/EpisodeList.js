@@ -5,7 +5,13 @@ import { useDispatch } from 'react-redux';
 import EpisodeListComponent from '../../components/Podcast/EpisodeList/index';
 import * as PlayerActions from '../../store/modules/player/actions';
 
-function EpisodeList({ episodes, podcast, noLabel = false, height = '100%' }) {
+function EpisodeList({
+  episodes,
+  podcast,
+  noLabel = false,
+  isPlaying = false,
+  height = '100%',
+}) {
   const dispatch = useDispatch();
 
   const onPlayEpisode = (episode) => {
@@ -22,6 +28,7 @@ function EpisodeList({ episodes, podcast, noLabel = false, height = '100%' }) {
 
   return (
     <EpisodeListComponent
+      isPlaying={isPlaying}
       noLabel={noLabel}
       items={episodeList}
       podcast={podcast}
@@ -36,6 +43,7 @@ EpisodeList.propTypes = {
   // eslint-disable-next-line
   podcast: PropTypes.object,
   noLabel: PropTypes.bool,
+  isPlaying: PropTypes.bool,
   height: PropTypes.string,
 };
 

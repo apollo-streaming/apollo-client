@@ -21,10 +21,10 @@ const TextContainer = styled(Flex)`
   margin-left: ${GRID.GET(2)};
 `;
 
-function Card({ avatar, name, content }) {
+function Card({ name, profilePicture, text, createdAt }) {
   return (
     <Flex alignItems="flex-start">
-      <Image src={avatar} />
+      <Image src={profilePicture} />
       <TextContainer direction="column">
         <Flex
           mb={GRID.GET(1)}
@@ -35,20 +35,20 @@ function Card({ avatar, name, content }) {
             {name}
           </Text>
           <Text size="x_small" color={COLORS.DARK_500}>
-            1 semana atrás
+            {new Date(createdAt).toLocaleDateString('pt-BR')}
           </Text>
         </Flex>
-        <Text color={COLORS.DARK_500}>{content}</Text>
+        <Text color={COLORS.DARK_500}>{text}</Text>
       </TextContainer>
     </Flex>
   );
 }
 
 Card.propTypes = {
-  avatar: PropTypes.string,
+  profilePicture: PropTypes.string,
   name: PropTypes.string,
-  content: PropTypes.string,
-  // createdAt: PropTypes.string,
+  text: PropTypes.string,
+  createdAt: PropTypes.string,
 };
 
 export default Card;

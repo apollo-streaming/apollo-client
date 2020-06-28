@@ -8,7 +8,10 @@ export const SidebarContainer = styled.nav`
   top: 0;
   right: 0;
   width: 464px;
-  height: 100%;
+  height: ${({ isPlayingPodcast }) =>
+    isPlayingPodcast ? 'calc(100% - 112px)' : '100%'};
+  max-height: ${({ isPlayingPodcast }) =>
+    isPlayingPodcast ? 'calc(100% - 112px)' : '100%'};
   overflow-y: scroll;
 
   background-color: ${({ shouldRenderLogo }) =>
@@ -18,6 +21,10 @@ export const SidebarContainer = styled.nav`
   padding-right: ${GRID.GET(6)};
   padding-bottom: ${GRID.GET(2)};
   padding-left: ${GRID.GET(6)};
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
 
   & > *:not(:first-child) {
     margin-bottom: ${({ shouldHavePb }) =>

@@ -15,6 +15,7 @@ function AboutEpisode({
   commentaries = [],
   commentary,
   setCommentary,
+  onAddCommentary,
 }) {
   return (
     <Flex direction="column" height={`calc(100% - ${GRID.GET(13)})`}>
@@ -44,21 +45,23 @@ function AboutEpisode({
             height="100%"
             mb={GRID.GET(1)}
           >
-            {commentaries.map(({ user, content, createdAt }) => (
+            {commentaries.map(({ user, text, createdAt }) => (
               <ListItem key={createdAt}>
-                <Card {...{ ...user, content, createdAt }} />
+                <Card {...{ ...user, text, createdAt }} />
               </ListItem>
             ))}
           </List>
         </Flex>
-        <Input
-          icon="right-arrow-circle"
-          bg={COLORS.CLEAR_100}
-          placeholder="Insira um comentário"
-          value={commentary}
-          onChange={(e) => setCommentary(e.target.value)}
-          width="100%"
-        />
+        <form onSubmit={onAddCommentary}>
+          <Input
+            icon="right-arrow-circle"
+            bg={COLORS.CLEAR_100}
+            placeholder="Insira um comentário"
+            value={commentary}
+            onChange={(e) => setCommentary(e.target.value)}
+            width="100%"
+          />
+        </form>
       </Flex>
     </Flex>
   );
@@ -70,6 +73,7 @@ AboutEpisode.propTypes = {
   commentaries: PropTypes.array,
   commentary: PropTypes.string,
   setCommentary: PropTypes.func,
+  onAddCommentary: PropTypes.func,
 };
 
 export default AboutEpisode;

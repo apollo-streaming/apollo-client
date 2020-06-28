@@ -1,0 +1,3 @@
+const ADD_COMMENTARY_REQUEST = '@commentary/ADD_COMMENTARY_REQUEST';
+
+export const Actions = { ADD_COMMENTARY_REQUEST };

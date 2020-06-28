@@ -4,8 +4,16 @@ import * as PropTypes from 'prop-types';
 import HomeList from './Generic/Home/List';
 import GRID from '../design-system/GRID';
 
-function RecentlyAdded({ addedItems }) {
-  const items = addedItems.map((item) => ({ ...item, image: item.banner }));
+function RecentlyAdded({ addedItems, onItemClick }) {
+  const items = addedItems.map((item) => {
+    const { link, ...filteredItem } = item;
+
+    return {
+      ...filteredItem,
+      image: item.banner,
+      onTitleClick: () => onItemClick({ ...item, image: item.banner }),
+    };
+  });
 
   return (
     <HomeList
@@ -22,6 +30,7 @@ function RecentlyAdded({ addedItems }) {
 RecentlyAdded.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   addedItems: PropTypes.array,
+  onItemClick: PropTypes.func,
 };
 
 export default RecentlyAdded;

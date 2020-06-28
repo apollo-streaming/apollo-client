@@ -52,6 +52,7 @@ function ListCard({
   height,
   width = height,
   link,
+  onTitleClick,
 }) {
   return (
     <Card bgImage={bgImage} {...{ squared, width, height }}>
@@ -73,6 +74,17 @@ function ListCard({
               alt: title,
             }}
           />
+        ) : onTitleClick ? (
+          <Text
+            pointer
+            maxWidth={getWidthDifference(width, GRID.GET(4))}
+            color={COLORS.CLEAR_100}
+            weight="bold"
+            alt={title}
+            onClick={onTitleClick}
+          >
+            {titleMaxSize ? limitCharacters(title, titleMaxSize, true) : title}
+          </Text>
         ) : (
           <Text
             maxWidth={getWidthDifference(width, GRID.GET(4))}
@@ -112,6 +124,7 @@ ListCard.propTypes = {
   height: PropTypes.string,
   titleMaxSize: PropTypes.number,
   subtitleMaxSize: PropTypes.number,
+  onTitleClick: PropTypes.func,
 };
 
 export default ListCard;
